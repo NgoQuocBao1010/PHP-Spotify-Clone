@@ -38,7 +38,7 @@ body {
     width: 20px;
     position: absolute;
     left: 50%;
-    bottom: 50%;
+    bottom: 60%;
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
@@ -153,3 +153,7 @@ body {
     color: lightgreen;
     cursor: pointer;
 }
+
+/* #playMode {
+    color: lightseagreen;
+} */

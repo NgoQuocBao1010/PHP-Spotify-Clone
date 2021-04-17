@@ -10,6 +10,7 @@ const volumeContainer = document.querySelector('.volume-container');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
 const mute = document.querySelector('#mute');
+const playModeBtn = document.querySelector('#playMode');
 
 // Song detatils
 const songDetails = [
@@ -28,7 +29,10 @@ const songDetails = [
 ];
 
 // Keep track of songs
-let songIndex = 0;
+let songIndex = 2;
+
+// Play mode
+let repeatSong = false;
 
 // Keep track of volume
 let currentVol = 1;
@@ -81,6 +85,16 @@ function prevSong() {
     playSong();
 }
 
+function endSong() {
+    if (!repeatSong) {
+        nextSong();
+    }
+    else {
+        loadSong(songDetails[songIndex]);
+        playSong();
+    }
+}
+
 function updateProgess(e) {
     const { duration, currentTime } = e.srcElement;
     const progressPercent = (currentTime / duration) * 100;
@@ -129,12 +143,21 @@ nextBtn.addEventListener('click', () => {
 prevBtn.addEventListener('click', () => {
     prevSong();
 });
+playModeBtn.addEventListener('click', () => {
+    if (!repeatSong) {
+        playModeBtn.style.color = 'lightseagreen';
+        repeatSong = true;
+    }
+    else {
+        playModeBtn.style.color = '#dfdbdf';
+        repeatSong = false;
+    }
+});
 audio.addEventListener('timeupdate', updateProgess);
-audio.addEventListener('ended', nextSong);
+audio.addEventListener('ended', endSong);
 progressContainer.addEventListener('click', setProgress);
 volumeContainer.addEventListener('click', setVolume);
 mute.addEventListener('click', () => {
-
     if (audio.volume != 0) {
         mute.classList.remove('fa-volume-up');
         mute.classList.add('fa-volume-mute');
@@ -142,7 +165,6 @@ mute.addEventListener('click', () => {
         audio.volume = 0;
         volume.style.width = '0%';
     }
-
     else {
         mute.classList.add('fa-volume-up');
         mute.classList.remove('fa-volume-mute');
@@ -153,6 +175,4 @@ mute.addEventListener('click', () => {
 
         volume.style.width = `${volPercent}% `;
     }
-
-
 });
