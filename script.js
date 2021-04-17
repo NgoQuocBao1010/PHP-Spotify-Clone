@@ -1,3 +1,4 @@
+const body = document.querySelector('body');
 const musicContainer = document.querySelector('.music-container');
 const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
@@ -29,7 +30,7 @@ const songDetails = [
 ];
 
 // Keep track of songs
-let songIndex = 2;
+let songIndex = 1;
 
 // Play mode
 let repeatSong = false;
@@ -40,6 +41,7 @@ let currentVol = 1;
 // Load song
 loadSong(songDetails[songIndex]);
 
+
 // Update song details
 function loadSong(songDetail) {
     const songTitle = songDetail['title'];
@@ -47,6 +49,21 @@ function loadSong(songDetail) {
     title.innerText = songTitle;
     audio.src = `music/${songUrl}.mp3`;
     cover.src = `images/${songUrl}.png`;
+
+    try {
+        var colorThief = new ColorThief();
+        console.log(
+            colorThief.getPalette(cover)
+        );
+        console.log(
+            'Dom',
+            colorThief.getColor(cover)
+        );
+        // body.style.backgroundImage = ``
+    }
+    catch (err) {
+        console.log(err);
+    }
 }
 
 function playSong() {
