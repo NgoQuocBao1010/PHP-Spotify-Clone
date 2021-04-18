@@ -27,6 +27,10 @@ const songDetails = [
         'title': 'Bạc Phận (Masew Remix)',
         'url': 'bp',
     },
+    {
+        'title': '3107',
+        'url': '3107',
+    },
 ];
 
 // Keep track of songs
@@ -49,21 +53,6 @@ function loadSong(songDetail) {
     title.innerText = songTitle;
     audio.src = `music/${songUrl}.mp3`;
     cover.src = `images/${songUrl}.png`;
-
-    try {
-        var colorThief = new ColorThief();
-        console.log(
-            colorThief.getPalette(cover)
-        );
-        console.log(
-            'Dom',
-            colorThief.getColor(cover)
-        );
-        // body.style.backgroundImage = ``
-    }
-    catch (err) {
-        console.log(err);
-    }
 }
 
 function playSong() {
@@ -170,9 +159,13 @@ playModeBtn.addEventListener('click', () => {
         repeatSong = false;
     }
 });
+
+// Audio progress
 audio.addEventListener('timeupdate', updateProgess);
 audio.addEventListener('ended', endSong);
 progressContainer.addEventListener('click', setProgress);
+
+// Volume progress
 volumeContainer.addEventListener('click', setVolume);
 mute.addEventListener('click', () => {
     if (audio.volume != 0) {
@@ -191,5 +184,24 @@ mute.addEventListener('click', () => {
         const volPercent = (currentVol / 1) * 100;
 
         volume.style.width = `${volPercent}% `;
+    }
+});
+
+// Background color change according to the album cover
+cover.addEventListener('load', () => {
+    try {
+        var colorThief = new ColorThief();
+        const palette = colorThief.getPalette(cover);
+
+        const brightColor = palette[0][0] + ', ' + palette[0][1] + ', ' + palette[0][2];
+        const darkColor = palette[7][0] + ', ' + palette[7][1] + ', ' + palette[7][2];
+
+        console.log(brightColor, darkColor);
+        body.style.background = `linear-gradient(0deg, rgb(${darkColor}), rgb(${brightColor}))`;
+        musicContainer.style.boxShadow = `0 20px 20px 0 rgba(${darkColor}, 0.6)`;
+    }
+    catch (err) {
+        body.style.backgroundImage = `linear-gradient(0deg, rgb(247, 247, 247) 23.8%, rgb(252, 221, 221) 92%)`;
+        console.log(err);
     }
 });
