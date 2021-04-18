@@ -192,12 +192,14 @@ cover.addEventListener('load', () => {
     try {
         var colorThief = new ColorThief();
         const palette = colorThief.getPalette(cover);
+        const dominantColor = colorThief.getColor(cover);
 
         const brightColor = palette[0][0] + ', ' + palette[0][1] + ', ' + palette[0][2];
         const darkColor = palette[7][0] + ', ' + palette[7][1] + ', ' + palette[7][2];
+        const dC = dominantColor[0] + ', ' + dominantColor[1] + ', ' + dominantColor[2];
 
         console.log(brightColor, darkColor);
-        body.style.background = `linear-gradient(0deg, rgb(${darkColor}), rgb(${brightColor}))`;
+        body.style.background = `linear-gradient(0deg, rgb(247, 247, 247) 23.8%, rgb(${dC}) 99%)`;
         musicContainer.style.boxShadow = `0 20px 20px 0 rgba(${darkColor}, 0.6)`;
     }
     catch (err) {
