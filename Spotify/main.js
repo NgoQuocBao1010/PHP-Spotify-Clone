@@ -1,14 +1,14 @@
 const buttons = document.querySelectorAll(".buttonContainer");
 
 // console.log(typeof (buttons));
-document.querySelectorAll(".buttonContainer").forEach(item => {
-    item.addEventListener('click', event => {
+document.querySelectorAll(".buttonContainer").forEach(button => {
+    button.addEventListener('click', event => {
         //handle click
-        if (item.classList.contains('active')) {
-            item.classList.remove('active');
+        if (button.classList.contains('active')) {
+            button.classList.remove('active');
         }
         else {
-            item.classList.add('active');
+            button.classList.add('active');
         }
     })
 })
