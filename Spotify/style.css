@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 * {
@@ -10,7 +11,19 @@
 body {
     color: white;
     font-family: 'Poppins', sans-serif;
+    background: black;
 }
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color:rgba(235, 221, 221, 0.4);
+}
+/* End scrollbar customization */
 
 .container {
     display: flex;
@@ -22,8 +35,10 @@ body {
     display: flex;
     width: 100%;
     height: 85vh;
-    background: lightcoral;
 }
+
+
+/* Sidebar */
 
 .sidebar {
     height: 100%;
@@ -31,6 +46,7 @@ body {
     flex: 2;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .header {
@@ -54,6 +70,7 @@ body {
     padding: 5px;
 }
 
+/* Buttons */
 .links {
     width: 100%;
     display: flex;
@@ -67,16 +84,15 @@ body {
     padding: 5px;
     align-items: center;
     cursor: pointer;
-
 }
 
 .buttonContainer i {
     margin: 10px;
-    font-size: 35px;
+    font-size: 20px;
 }
 
 .buttonContainer h3 {
-    margin: 10px;
+    margin: 5px;
     font-size: 18px;
 }
 
@@ -85,6 +101,40 @@ body {
 
 }
 
+.breakLine {
+    width: 80%;
+    height: 2px;
+    border-radius: 1px;
+    background: gray;
+    margin: 5px auto;
+}
+
+/* Playtists */
+.playtists {
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    overflow-y: scroll;
+}
+
+.playtist {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.playtist h4 {
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+}
+
+/* End sidebar */
+
+/* Music player section */
 .musicPlayerContainer {
     width: 100%;
     height: 15vh;
@@ -100,6 +150,7 @@ body {
     align-items: center;
 }
 
+/* Music Info */
 .musicInfo {
     width: 25%;
     justify-content: space-evenly;
@@ -122,6 +173,8 @@ body {
     color: rgba(235, 221, 221, 0.521);
 }
 
+
+/* Music Player */
 .musicPlayer {
     width: 40%;
     justify-content: center;
@@ -166,10 +219,12 @@ body {
     width: 80%;
 }
 
+/* Volume and progress section */
 .progress,
 .volume {
-    background-color: lightcoral;
-    border-radius: 10px;
+    padding: 0;
+    background-color: gray;
+    border-radius: 2px;
     height: 100%;
     width: 0%;
     transition: width 0.1s linear;
@@ -192,25 +247,104 @@ body {
 }
 
 .volume {
-    width: 70%;
+    width: 100%;
     height: 4px;
     padding: 0;
     background-color: lightgreen;
 }
+/* End musicplayer section */
 
+/* Musics container */
 .musicContainer {
     flex: 8;
     height: 100%;
-    background: lightblue;
+    background-image: linear-gradient(180deg, rgb(68, 66, 66), black);
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
 }
 
-.block {
-    width: 30%;
-    min-height: 200px;
-    background-color: lightcoral;
-    margin: 10px 0;
+.musicContainer section {
+    width: 95%;
+    min-height: 400px;
+    margin: 20px auto;
+    padding: 10px;
 }
 
+.sectonTitle {
+    font-weight: 500;
+}
+
+.cards {
+    width: 100%;
+    height: 85%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    height: 100%;
+    padding: 10px;
+    margin-right: 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 1s ease;
+    background: linear-gradient(180deg, rgb(90, 90, 92) 0%, rgba(109,109,114,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+.imgContainer {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+    box-shadow: 0 30px 30px -6px black;
+    transition: all 0.5s ease;
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+    height: 20%;
+}
+
+.card h3,
+.card h5 {
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.25s ease;
+}
+
+.card h3 {
+    font-size: 18px;
+}
+
+.card h5 {
+    font-size: 12px;
+    color: gray;
+}
+
+.card:hover {
+    background: rgb(80, 79, 79);
+}
+
+.card:hover h3, 
+.card:hover h5 {
+    transform: scale(1.03);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}

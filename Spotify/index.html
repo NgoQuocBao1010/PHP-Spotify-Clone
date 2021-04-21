@@ -31,23 +31,88 @@
                         <i class="fas fa-search"></i>
                         <h3>Search</h3>
                     </div>
+                    <div class="buttonContainer">
+                        <i class="fas fa-music"></i>
+                        <h3>Library</h3>
+                    </div>
+                    <div class="buttonContainer">
+                        <i class="fas fa-grin-hearts"></i>
+                        <h3>Favorites</h3>
+                    </div>
+                </div>
+
+                <div class="breakLine"></div>
+
+                <div class="playtists">
+                    <div class="playtist">
+                        <h4>Playtist 1</h4>
+                    </div>
+                    <div class="playtist">
+                        <h4>Playtist 2</h4>
+                    </div>
+                    <div class="playtist">
+                        <h4>Playtist 3</h4>
+                    </div>
                 </div>
             </div>
 
             <div class="musicContainer">
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
+                <section>
+                    <h1 class="sectionTitle">Recommend Songs</h1>
+                    <div class="cards">
+                        <div class="card" data="ctcht">
+                            <div class="imgContainer">
+                                <img src="./images/ctcht.png" alt="">
+                            </div>
+                            <div class="cardInfo">
+                                <h3>Chúng ta của hiện tại</h3>
+                                <h5>Sơn Tùng MTP</h5>
+                            </div>
+                        </div>
+                        <div class="card" data="3107">
+                            <div class="imgContainer">
+                                <img src="./images/3107.png" alt="">
+                            </div>
+                            <div class="cardInfo">
+                                <h3>3107</h3>
+                                <h5>Dương ft Nâu</h5>
+                            </div>
+                        </div>
+                        <div class="card" data="bp">
+                            <div class="imgContainer">
+                                <img src="./images/bp.png" alt="">
+                            </div>
+                            <div class="cardInfo">
+                                <h3>Bạc Phận (Masew Remix)</h3>
+                                <h5>Jack, K-ICM ft Masew</h5>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h1 class="sectionTitle">New Songs</h1>
+                    <div class="cards">
+                        <div class="card" data="tscnl">
+                            <div class="imgContainer">
+                                <img src="./images/tscnl.png" alt="">
+                            </div>
+                            <div class="cardInfo">
+                                <h3>Tâm sự cùng người lạ</h3>
+                                <h5>Tiên Cookie</h5>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
+
+        <!-- Music Player -->
         <div class="musicPlayerContainer">
             <div class="musicInfo">
-                <img src="./images/ctcht.png" alt="">
+                <img id="imgCover" src="./images/logo.jpg" alt="">
                 <div class="musicDetail">
-                    <h4>Chúng ta của hiện tại</h4>
-                    <h5>Sơn Tùng MTP</h5>
+                    <h4 id="title"></h4>
+                    <h5 id="singer"></h5>
                 </div>
                 <i class="far fa-heart"></i>
             </div>
@@ -66,6 +131,7 @@
                 <div class="progressContainer">
                     <div class="progress"></div>
                 </div>
+                <audio id="audio" src="#"></audio>
             </div>
             <div class="volumeContainer">
                 <i class="fas fa-volume-up" id="mute"></i>
