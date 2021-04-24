@@ -13,9 +13,11 @@
     <title>Spotify</title>
 </head>
 
+
 <body>
     <div class="container">
         <div class="content">
+            <!-- Sidebar -->
             <div class="sidebar">
                 <div class="header">
                     <i class="fab fa-spotify"></i>
@@ -23,21 +25,23 @@
                 </div>
 
                 <ul class="links">
-                    <li><a class="buttonContainer" href="#"><i class="fas fa-house-user"></i>
+                    <li>
+                        <button class="buttonContainer active" command="home2">
+                            <i class="fas fa-house-user"></i>
                             <h3>Home</h3>
-                        </a>
-                    </li>
-                    <li><a class="buttonContainer" href="#"><i class="fas fa-search"></i>
+                        </button>
+                        <button class="buttonContainer" command="search">
+                            <i class="fas fa-search"></i>
                             <h3>Search</h3>
-                        </a>
-                    </li>
-                    <li><a class="buttonContainer" href="#"><i class="fas fa-music"></i>
+                        </button>
+                        <button class="buttonContainer" command="library">
+                            <i class="fas fa-music"></i>
                             <h3>Library</h3>
-                        </a>
-                    </li>
-                    <li><a class="buttonContainer" href="#"><i class="fas fa-grin-hearts"></i>
-                            <h3>Favorites</h3>
-                        </a>
+                        </button>
+                        <button class="buttonContainer" command="favourites">
+                            <i class="fas fa-grin-hearts"></i>
+                            <h3>Favourites</h3>
+                        </button>
                     </li>
                 </ul>
 
@@ -55,7 +59,9 @@
                     </div>
                 </div>
             </div>
+            <!-- End sidebar -->
 
+            <!-- Music UI -->
             <div class="musicContainer">
                 <section>
                     <h1 class="sectionTitle">Recommend Songs</h1>
@@ -103,7 +109,14 @@
                         </div>
                     </div>
                 </section>
+                <!-- <section>
+                    <input type="text" name="song" class="search">
+                    <button type="submit">Submit</button>
+                    <input type="submit" value="Submit">
+                </section> -->
+
             </div>
+            <!-- End Music UI -->
         </div>
 
         <!-- Music Player -->
