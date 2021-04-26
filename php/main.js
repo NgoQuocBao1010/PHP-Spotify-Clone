@@ -1,4 +1,5 @@
 const cards = document.querySelectorAll(".card");
+const songs = document.querySelectorAll(".song");
 
 // Song control buttons
 const playBtn = document.querySelector('#play');
@@ -102,6 +103,15 @@ function setVolume(e) {
 cards.forEach(card => {
     card.addEventListener('click', () => {
         const songCode = card.getAttribute("data");
+        console.log(songCode);
+        loadSong(songCode);
+        playSong();
+    })
+})
+
+songs.forEach(song => {
+    song.addEventListener('click', () => {
+        const songCode = song.getAttribute("data");
         console.log(songCode);
         loadSong(songCode);
         playSong();
