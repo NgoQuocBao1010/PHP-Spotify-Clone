@@ -1,7 +1,7 @@
 <section>
     <h1 class="sectionTitle">Recommend Songs</h1>
     <div class="cards">
-        <div class="card" data="ctcht">
+        <!-- <div class="card" data="ctcht">
             <div class="imgContainer">
                 <img src="./images/ctcht.png" alt="">
             </div>
@@ -27,7 +27,18 @@
                 <h3>Bạc Phận (Masew Remix)</h3>
                 <h5>Jack, K-ICM ft Masew</h5>
             </div>
+        </div> -->
+        <?php foreach ($songs as $song): ?>
+        <div class="card" data="<?php echo $song["songCode"]; ?>">
+            <div class="imgContainer">
+                <img src="<?php echo "./images/" . $song["songCode"] . ".png"; ?>" alt="">
+            </div>
+            <div class="cardInfo">
+                <h3><?php echo $song["songName"]; ?></h3>
+                <h5><?php echo $song["singerName"]; ?></h5>
+            </div>
         </div>
+        <?php endforeach; ?>
     </div>
 </section>
 <section>

@@ -20,7 +20,7 @@
             </button>
             <button class="buttonContainer" page-data="favourites">
                 <i class="fas fa-grin-hearts"></i>
-                <h3>Favourites</h3>
+                <h3><a href="uploadSongs.php">Uploads</a></h3>
             </button>
         </li>
     </ul>

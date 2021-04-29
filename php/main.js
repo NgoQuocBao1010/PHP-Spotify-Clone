@@ -18,24 +18,24 @@ const volumeInfo = document.querySelector(".volumeInfo");
 const volume = document.querySelector(".volume");
 
 // Song Detail
-const songDetails = {
-    'ctcht': {
-        'title': 'Chúng ta của hiện tại',
-        'singer': 'Sơn Tùng MTP',
-    },
-    'tscnl': {
-        'title': 'Tâm sự cùng người lạ',
-        'singer': 'Tiên Cookie',
-    },
-    'bp': {
-        'title': 'Bạc Phận (Masew Remix)',
-        'singer': 'Jack, K-ICM ft Masew',
-    },
-    '3107': {
-        'title': '3107',
-        'singer': 'Dương ft Nâu',
-    },
-}
+// const songDetails = {
+//     'ctcht': {
+//         'title': 'Chúng ta của hiện tại',
+//         'singer': 'Sơn Tùng MTP',
+//     },
+//     'tscnl': {
+//         'title': 'Tâm sự cùng người lạ',
+//         'singer': 'Tiên Cookie',
+//     },
+//     'bp': {
+//         'title': 'Bạc Phận (Masew Remix)',
+//         'singer': 'Jack, K-ICM ft Masew',
+//     },
+//     '3107': {
+//         'title': '3107',
+//         'singer': 'Dương ft Nâu',
+//     },
+// }
 
 // checking variables
 let isPlaying = false;
@@ -46,10 +46,11 @@ function loadSong(songCode) {
     const songUrl = `./music/${songCode}.mp3`;
     const songImgUrl = `./images/${songCode}.png`;
 
+
     audio.src = songUrl;
     coverImg.src = songImgUrl;
-    title.innerText = songDetails[songCode]['title'];
-    singer.innerText = songDetails[songCode]['singer'];
+    // title.innerText = songDetails[songCode]['title'];
+    // singer.innerText = songDetails[songCode]['singer'];
 }
 
 // Play song

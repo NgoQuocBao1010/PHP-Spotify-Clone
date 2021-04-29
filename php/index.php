@@ -1,5 +1,18 @@
 <?php
     include("./components/getUrl.php");
+
+    include("./pages/dbConnection.php");
+
+    $recommendSongs = "SELECT Songs.id, Songs.title title, Singers.name singerName, 
+                              Songs.filePath, Songs.imgPath
+                    FROM Songs 
+                    LEFT JOIN Singers on Singers.id = Songs.singerID
+                    LIMIT 3";
+    
+
+    $result = mysqli_query($conn, $recommendSongs);
+    $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // print_r($songs);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +47,14 @@
         <?php include("./components/musicPlayer.php"); ?>
     </div>
 </body>
-<script src="main.js"></script>
 <?php include("./components/changePageJs.php"); ?>
-
+<script>
+    let songDetails = <?php echo json_encode($songs); ?>;
+    // console.log(songDetails);
+</script>
+<script src="main.js"></script>
+<script>
+    // const musicUI = document.querySelector(".musicContainer");
+    console.log(musicUI.innerHTML);
+</script>
 </html>

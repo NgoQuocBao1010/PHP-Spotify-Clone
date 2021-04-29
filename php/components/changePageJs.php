@@ -18,11 +18,14 @@
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var data = JSON.parse(this.responseText);
-                    console.log(data);
+                    console.log(data['data']);
                     musicUI.innerHTML =  data['data'];
 
                     if (page != "search") {
                         cardsClick();
+                    }
+                    else {
+                        chooseSong();
                     }
                 }
             };
@@ -36,6 +39,18 @@
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 const songCode = card.getAttribute("data");
+                console.log(songCode);
+                loadSong(songCode);
+                playSong();
+            })
+        })
+    }
+
+    function chooseSong() {
+        const songs = document.querySelectorAll(".song");
+        songs.forEach(song => {
+            song.addEventListener('click', () => {
+                const songCode = song.getAttribute("data");
                 console.log(songCode);
                 loadSong(songCode);
                 playSong();
