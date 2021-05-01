@@ -17,40 +17,22 @@ const progress = document.querySelector(".progress");
 const volumeInfo = document.querySelector(".volumeInfo");
 const volume = document.querySelector(".volume");
 
-// Song Detail
-// const songDetails = {
-//     'ctcht': {
-//         'title': 'Chúng ta của hiện tại',
-//         'singer': 'Sơn Tùng MTP',
-//     },
-//     'tscnl': {
-//         'title': 'Tâm sự cùng người lạ',
-//         'singer': 'Tiên Cookie',
-//     },
-//     'bp': {
-//         'title': 'Bạc Phận (Masew Remix)',
-//         'singer': 'Jack, K-ICM ft Masew',
-//     },
-//     '3107': {
-//         'title': '3107',
-//         'singer': 'Dương ft Nâu',
-//     },
-// }
+// Input
+const inputSearch = document.querySelector(".search");
 
 // checking variables
 let isPlaying = false;
 let currentVol = 1;
 
 // Load song 
-function loadSong(songCode) {
-    const songUrl = `./music/${songCode}.mp3`;
-    const songImgUrl = `./images/${songCode}.png`;
+function loadSong(songID) {
+    const song = songDetails[songID];
+    console.log("Playing ", song['title']);
 
-
-    audio.src = songUrl;
-    coverImg.src = songImgUrl;
-    // title.innerText = songDetails[songCode]['title'];
-    // singer.innerText = songDetails[songCode]['singer'];
+    audio.src = song['audio'];
+    coverImg.src = song['img'];
+    title.innerText = song['title'];
+    singer.innerText = song['singerName'];
 }
 
 // Play song
@@ -101,20 +83,23 @@ function setVolume(e) {
     volume.style.width = `${volumePercent}%`;
 }
 
+function search(e) {
+    console.log(e.target.value);
+    window.history.pushState("", "", pageUrl + "/" + "search.php?search=" + e.target.value);
+}
+
 cards.forEach(card => {
     card.addEventListener('click', () => {
-        const songCode = card.getAttribute("data");
-        console.log(songCode);
-        loadSong(songCode);
+        const songID = card.getAttribute("data");
+        loadSong(songID);
         playSong();
     })
 })
 
 songs.forEach(song => {
     song.addEventListener('click', () => {
-        const songCode = song.getAttribute("data");
-        console.log(songCode);
-        loadSong(songCode);
+        const songID = song.getAttribute("data");
+        loadSong(songID);
         playSong();
     })
 })
@@ -151,3 +136,4 @@ mute.addEventListener('click', () => {
 audio.addEventListener('timeupdate', updateProgess);
 progressContainer.addEventListener('click', setProgress);
 volumeInfo.addEventListener('click', setVolume);
+inputSearch.addEventListener('input', search);

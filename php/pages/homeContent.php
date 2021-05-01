@@ -1,56 +1,29 @@
 <section>
     <h1 class="sectionTitle">Recommend Songs</h1>
     <div class="cards">
-        <!-- <div class="card" data="ctcht">
-            <div class="imgContainer">
-                <img src="./images/ctcht.png" alt="">
+        <?php foreach ($randomKeys as $key) : ?>
+            <div class="card" data="<?php echo $songs[$key]["id"]; ?>">
+                <div class="imgContainer">
+                    <img src="<?php echo $songs[$key]["img"]; ?>" alt="">
+                </div>
+                <div class="cardInfo">
+                    <h3><?php echo $songs[$key]["title"]; ?></h3>
+                    <h5><?php echo $songs[$key]["singerName"]; ?></h5>
+                </div>
             </div>
-            <div class="cardInfo">
-                <h3>Chúng ta của hiện tại</h3>
-                <h5>Sơn Tùng MTP</h5>
-            </div>
-        </div>
-        <div class="card" data="3107">
-            <div class="imgContainer">
-                <img src="./images/3107.png" alt="">
-            </div>
-            <div class="cardInfo">
-                <h3>3107</h3>
-                <h5>Dương ft Nâu</h5>
-            </div>
-        </div>
-        <div class="card" data="bp">
-            <div class="imgContainer">
-                <img src="./images/bp.png" alt="">
-            </div>
-            <div class="cardInfo">
-                <h3>Bạc Phận (Masew Remix)</h3>
-                <h5>Jack, K-ICM ft Masew</h5>
-            </div>
-        </div> -->
-        <?php foreach ($songs as $song): ?>
-        <div class="card" data="<?php echo $song["songCode"]; ?>">
-            <div class="imgContainer">
-                <img src="<?php echo "./images/" . $song["songCode"] . ".png"; ?>" alt="">
-            </div>
-            <div class="cardInfo">
-                <h3><?php echo $song["songName"]; ?></h3>
-                <h5><?php echo $song["singerName"]; ?></h5>
-            </div>
-        </div>
         <?php endforeach; ?>
     </div>
 </section>
 <section>
     <h1 class="sectionTitle">New Songs</h1>
     <div class="cards">
-        <div class="card" data="tscnl">
+        <div class="card" data="<?php echo $songs[0]["id"]; ?>">
             <div class="imgContainer">
-                <img src="./images/tscnl.png" alt="">
+                <img src="<?php echo $songs[0]["img"]; ?>" alt="">
             </div>
             <div class="cardInfo">
-                <h3>Tâm sự cùng người lạ</h3>
-                <h5>Tiên Cookie</h5>
+                <h3><?php echo $songs[0]["title"]; ?></h3>
+                <h5><?php echo $songs[0]["singerName"]; ?></h5>
             </div>
         </div>
     </div>

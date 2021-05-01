@@ -5,13 +5,14 @@
         if ($page === "search") {
             echo json_encode(array(
                 'page' => $page,
-                'data'=>file_get_contents('./pages/searchContent.php'),
+                // 'data'=>file_get_contents('./pages/searchContent.php'),
+                'data'=>'./pages/searchContent.php',
             ));
         }
         else {
             echo json_encode(array(
                 'page' => $page,
-                'data'=>file_get_contents('./pages/homeContent.php'),
+                'data'=>'./pages/homeContent.php',
             ));
         }
         
