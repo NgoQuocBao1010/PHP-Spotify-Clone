@@ -1,5 +1,5 @@
 <?php
-include("./pages/dbConnection.php");
+include("./utils/dbConnection.php");
 
 $getSingers = "SELECT * from Singers";
 $result = mysqli_query($conn, $getSingers);
@@ -12,7 +12,7 @@ function saveFile($fileInfo)
 {
   $filename = $fileInfo['name'];
   $type = $fileInfo['type'];
-  $folder = (strpos($type, "image") !== false) ? 'imagesTest' : 'musicTest';
+  $folder = (strpos($type, "image") !== false) ? 'images' : 'music';
 
   $tmpPath = $fileInfo['tmp_name'];
   $destination = $folder . '/' . $filename;

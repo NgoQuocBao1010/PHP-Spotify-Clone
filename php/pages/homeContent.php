@@ -26,5 +26,14 @@
                 <h5><?php echo $songs[0]["singerName"]; ?></h5>
             </div>
         </div>
+        <div class="card" data="<?php echo $songs[1]["id"]; ?>">
+            <div class="imgContainer">
+                <img src="<?php echo $songs[1]["img"]; ?>" alt="">
+            </div>
+            <div class="cardInfo">
+                <h3><?php echo $songs[1]["title"]; ?></h3>
+                <h5><?php echo $songs[1]["singerName"]; ?></h5>
+            </div>
+        </div>
     </div>
 </section>

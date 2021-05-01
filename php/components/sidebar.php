@@ -14,12 +14,12 @@
                 <i class="fas fa-search"></i>
                 <h3>Search</h3>
             </button>
-            <button class="buttonContainer" page-data="library">
-                <i class="fas fa-music"></i>
-                <h3>Library</h3>
-            </button>
             <button class="buttonContainer" page-data="favourites">
                 <i class="fas fa-grin-hearts"></i>
+                <h3>Favourites</h3>
+            </button>
+            <button class="buttonContainer" page-data="#">
+                <i class="fas fa-music"></i>
                 <h3><a href="uploadSongs.php">Uploads</a></h3>
             </button>
         </li>

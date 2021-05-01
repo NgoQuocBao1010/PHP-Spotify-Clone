@@ -23,11 +23,13 @@ const inputSearch = document.querySelector(".search");
 // checking variables
 let isPlaying = false;
 let currentVol = 1;
+let playingQueue = [];
+let songIndex = 0;
 
 // Load song 
-function loadSong(songID) {
-    const song = songDetails[songID];
-    console.log("Playing ", song['title']);
+function loadSong(song) {
+    // const song = songDetails[songID];
+    // console.log("Playing ", song['title']);
 
     audio.src = song['audio'];
     coverImg.src = song['img'];
@@ -42,7 +44,21 @@ function playSong() {
     playBtn.querySelector('i.fas').classList.remove('fa-play');
     playBtn.querySelector('i.fas').classList.add('fa-pause');
     audio.play();
+    console.log(playingQueue);
     isPlaying = true;
+}
+
+// Play all songs in queue
+function playQueue() {
+    loadSong(playingQueue[songIndex]);
+    playSong();
+}
+
+// Play 1 song immediately
+function playImmediate(song) {
+    playingQueue = [];
+    playingQueue.push(song);
+    playQueue();
 }
 
 // Pause song
@@ -53,11 +69,38 @@ function pauseSong() {
     isPlaying = false;
 }
 
+function nextSong() {
+    songIndex++;
+
+    if (songIndex > playingQueue.length - 1) {
+        songIndex = 0;
+    }
+
+    loadSong(playingQueue[songIndex]);
+    playSong();
+}
+
+function prevSong() {
+    songIndex--;
+
+    if (songIndex < 0) {
+        songIndex = playingQueue.length - 1;
+    }
+
+    loadSong(playingQueue[songIndex]);
+    playSong();
+}
+
 // Update song progress
 function updateProgess(e) {
     const { duration, currentTime } = e.srcElement;
     const progressPercent = (currentTime / duration) * 100;
     progress.style.width = `${progressPercent}%`;
+}
+
+// Endsong
+function endSong() {
+    nextSong();
 }
 
 // Set song progess on click
@@ -83,24 +126,50 @@ function setVolume(e) {
     volume.style.width = `${volumePercent}%`;
 }
 
+// Search songs in realtime
 function search(e) {
-    console.log(e.target.value);
-    window.history.pushState("", "", pageUrl + "/" + "search.php?search=" + e.target.value);
+    let filterTexts = e.target.value;
+    window.history.pushState("", "", pageUrl + "/" + "search.php?search=" + filterTexts);
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText !== "") {
+                // var data = JSON.parse(this.responseText);
+                console.log(this.responseText);
+
+                const songsContain = document.querySelector(".songsContain");
+                songsContain.innerHTML = this.responseText;
+                const songs = document.querySelectorAll(".song");
+                songs.forEach(title => {
+                    title.addEventListener('click', () => {
+                        const songID = title.getAttribute("data");
+                        const song = songDetails[songID];
+                        playImmediate(song);
+                    })
+                })
+            }
+        }
+    };
+    xmlhttp.open("GET", "./utils/getSongs.php?filter=" + filterTexts, true);
+    xmlhttp.send();
 }
 
+
+// Event listeners section
 cards.forEach(card => {
     card.addEventListener('click', () => {
         const songID = card.getAttribute("data");
-        loadSong(songID);
-        playSong();
+        const song = songDetails[songID];
+        playImmediate(song);
     })
 })
 
-songs.forEach(song => {
-    song.addEventListener('click', () => {
-        const songID = song.getAttribute("data");
-        loadSong(songID);
-        playSong();
+songs.forEach(title => {
+    title.addEventListener('click', () => {
+        const songID = title.getAttribute("data");
+        const song = songDetails[songID];
+        playImmediate(song);
     })
 })
 
@@ -111,6 +180,12 @@ playBtn.addEventListener('click', () => {
     else {
         playSong();
     }
+});
+nextBtn.addEventListener('click', () => {
+    nextSong();
+});
+prevBtn.addEventListener('click', () => {
+    prevSong();
 });
 
 mute.addEventListener('click', () => {
@@ -134,6 +209,7 @@ mute.addEventListener('click', () => {
 });
 
 audio.addEventListener('timeupdate', updateProgess);
+audio.addEventListener('ended', endSong);
 progressContainer.addEventListener('click', setProgress);
 volumeInfo.addEventListener('click', setVolume);
 inputSearch.addEventListener('input', search);

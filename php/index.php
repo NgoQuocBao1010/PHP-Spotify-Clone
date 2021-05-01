@@ -14,12 +14,12 @@ $result = mysqli_query($conn, $getAllSongsQuery);
 $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 // Generate random songs
-$randomKeys = array_rand($songs, 3);
+$randomKeys = (count($songs) >= 3) ? array_rand($songs, 3) : $songs;
 
-$test = array();
+$formatSongs = array();
 
 foreach ($songs as $song) {
-    $test[$song["id"]] = $song;
+    $formatSongs[$song["id"]] = $song;
 }
 ?>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@ foreach ($songs as $song) {
 </body>
 <?php include("./utils/changePageJs.php"); ?>
 <script>
-    let songDetails = JSON.parse('<?php echo json_encode($test); ?>');
+    let songDetails = JSON.parse('<?php echo json_encode($formatSongs); ?>');
 </script>
 <script src="main.js"></script>
 <script>

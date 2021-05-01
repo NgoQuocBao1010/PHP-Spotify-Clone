@@ -28,7 +28,10 @@
                 <div class="info">
                     <h4><?php echo $index + 1; ?> </h4>
                     <img src="<?php echo $song['img']; ?>">
-                    <h4><?php echo $song['title']; ?></h4>
+                    <div class="detail">
+                        <h4><?php echo $song['title']; ?></h4>
+                        <h5><?php echo $song['singerName']; ?></h5>
+                    </div>
                 </div>
                 <div class="func">
                     <i class="far fa-heart"></i>
