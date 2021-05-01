@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://css.gg/home.css" rel="stylesheet" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.2/simplebar.min.js"
+            integrity="sha512-t5ONTEmbf892tq6YhM2eSBdDALGVbnQgqSy5fez2Dki/raOHJxKuf1DWSyHs8qvXoNDg2aJ9RdukRj0lRspfAw=="
+            crossorigin="anonymous"
+        ></script>
+        <title>Spotify</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="content">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="header">
+                        <i class="fab fa-spotify"></i>
+                        <h1>Not Spotify</h1>
+                    </div>
+
+                    <ul class="links">
+                        <li>
+                            <button
+                                class="buttonContainer active"
+                                command="home2"
+                            >
+                                <i class="fas fa-house-user"></i>
+                                <h3>Home</h3>
+                            </button>
+                            <button class="buttonContainer" command="search">
+                                <i class="fas fa-search"></i>
+                                <h3>Search</h3>
+                            </button>
+                            <button class="buttonContainer" command="library">
+                                <i class="fas fa-music"></i>
+                                <h3>Library</h3>
+                            </button>
+                            <button
+                                class="buttonContainer"
+                                command="favourites"
+                            >
+                                <i class="fas fa-grin-hearts"></i>
+                                <h3>Favourites</h3>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="breakLine"></div>
+
+                    <div class="playtists">
+                        <div class="playtist">
+                            <h4>Playtist 1</h4>
+                        </div>
+                        <div class="playtist">
+                            <h4>Playtist 2</h4>
+                        </div>
+                        <div class="playtist">
+                            <h4>Playtist 3</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- End sidebar -->
+
+                <!-- Music UI -->
+                <div class="musicContainer">
+                    <div class="cover">
+                        <img src="./cover.png" alt="" />
+                        <div class="coverDetail">
+                            <h1>Sơn Tùng MTP</h1>
+                            <div class="pulse">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="products"></div>
+                    <div class="description"></div>
+                </div>
+                <!-- End Music UI -->
+            </div>
+
+            <!-- Music Player -->
+            <div class="musicPlayerContainer">
+                <div class="musicInfo">
+                    <img id="imgCover" src="./images/logo.jpg" alt="" />
+                    <div class="musicDetail">
+                        <h4 id="title"></h4>
+                        <h5 id="singer"></h5>
+                    </div>
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="musicPlayer">
+                    <div class="navigation">
+                        <button id="prev" class="action-btn">
+                            <i class="fas fa-backward"></i>
+                        </button>
+                        <button id="play" class="action-btn action-btn-big">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="next" class="action-btn">
+                            <i class="fas fa-forward"></i>
+                        </button>
+                    </div>
+                    <div class="progressContainer">
+                        <div class="progress"></div>
+                    </div>
+                    <audio id="audio" src="#"></audio>
+                </div>
+                <div class="volumeContainer">
+                    <i class="fas fa-volume-up" id="mute"></i>
+                    <div class="volumeInfo">
+                        <div class="volume"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        const musicContainer = document.querySelector(".musicContainer");
+    </script>
+    <script src="main.js"></script>
+</html>
