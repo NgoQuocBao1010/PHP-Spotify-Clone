@@ -1,7 +1,8 @@
 <script type="text/javascript">
     let pageUrl = '<?php echo $app_url; ?>';
     const changePageBtns = document.querySelectorAll(".buttonContainer");
-    // const musicUI = document.querySelector(".musicContainer");
+
+
 
     function showContent(page) {
         document.querySelectorAll(".musicContainer").forEach(ui => {

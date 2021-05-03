@@ -3,8 +3,9 @@ include("./utils/getUrl.php");
 
 include("./utils/dbConnection.php");
 
-$getAllSongsQuery = "SELECT Songs.id, Songs.title title, Singers.name singerName, 
-                              Songs.filePath audio, Songs.imgPath img
+$getAllSongsQuery = "SELECT Songs.id, Songs.title title,
+                            Songs.filePath audio, Songs.imgPath img,
+                            Singers.name singerName, Singers.id singerID
                     FROM Songs 
                     LEFT JOIN Singers on Singers.id = Songs.singerID
                     ORDER BY Songs.dateAdded DESC";
@@ -49,17 +50,20 @@ foreach ($songs as $song) {
             <div class="musicContainer hide" id="search">
                 <?php include("./pages/searchContent.php"); ?>
             </div>
+            <div class="musicContainer hide" id="singer">
+                <?php include("./pages/singerContent.php"); ?>
+            </div>
             <!-- End Music UI -->
         </div>
         <!-- Music Player -->
         <?php include("./components/musicPlayer.php"); ?>
     </div>
 </body>
-<?php include("./utils/changePageJs.php"); ?>
 <script>
     let songDetails = JSON.parse('<?php echo json_encode($formatSongs); ?>');
 </script>
 <script src="main.js"></script>
+<?php include("./utils/changePageJs.php"); ?>
 <script>
     // const musicUI = document.querySelector(".musicContainer");
     // console.log(musicUI.innerHTML);

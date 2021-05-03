@@ -3,8 +3,9 @@ include("./dbConnection.php");
 if (isset($_GET['filter'])) {
     $filterTexts = $_GET['filter'];
 
-    $songsFilterQuery = "SELECT Songs.id, Songs.title title, Singers.name singerName, 
-                    Songs.filePath audio, Songs.imgPath img
+    $songsFilterQuery = "SELECT Songs.id, Songs.title title,
+                    Songs.filePath audio, Songs.imgPath img,
+                    Singers.name singerName, Singers.id singerID
                     FROM Songs 
                     LEFT JOIN Singers on Singers.id = Songs.singerID
                     WHERE title LIKE '%$filterTexts%' OR Singers.name LIKE '%$filterTexts%'";
@@ -22,12 +23,12 @@ if (isset($_GET['filter'])) {
             echo        '<img src="' . $song['img'] . '">';
             echo        '<div class="detail">';
             echo            '<h4>' . $song['title'] . '</h4>';
-            echo            '<h5>' . $song['singerName'] . '</h5>';
+            echo            '<h5 class="singerPage" data-singer="' . $song['singerID'] . '">' . $song['singerName'] . '</h5>';
             echo        '</div>';
             echo    '</div>';
             echo     '<div class="func">';
             echo        '<i class="far fa-heart"></i>';
-            echo        '<h4>3:01</h4>';
+            echo        '<i class="fas fa-list-ul"></i>';
             echo    '</div>';
             echo  '</div>';
         }

@@ -1,5 +1,5 @@
 const cards = document.querySelectorAll(".card");
-const songs = document.querySelectorAll(".song");
+const songsTitle = document.querySelectorAll(".song");
 
 // Song control buttons
 const playBtn = document.querySelector('#play');
@@ -11,7 +11,7 @@ const muteBtn = document.querySelector("#mute");
 const audio = document.querySelector("#audio");
 const coverImg = document.querySelector("#imgCover");
 const title = document.querySelector("#title");
-const singer = document.querySelector("#singer");
+const singerName = document.querySelector("#singerName");
 const progressContainer = document.querySelector(".progressContainer");
 const progress = document.querySelector(".progress");
 const volumeInfo = document.querySelector(".volumeInfo");
@@ -26,6 +26,92 @@ let currentVol = 1;
 let playingQueue = [];
 let songIndex = 0;
 
+
+function goToSingerPage() {
+    const singerLinks = document.querySelectorAll(".singerPage");
+    singerLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            const singerID = link.getAttribute("data-singer");
+
+            window.history.pushState("", "", pageUrl + "/" + "singer.php" + "?singerID=" + singerID);
+
+            showContent("singer");
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (this.responseText !== "") {
+                        var data = JSON.parse(this.responseText)[0];
+                        console.log(data);
+
+                        const singerUI = document.getElementById("singer");
+                        const sImg = singerUI.querySelector(".cover img");
+                        sImg.src = data["image"];
+                        const sName = singerUI.querySelector(".coverDetail h1");
+                        sName.innerText = data["name"];
+                        const sDescription = singerUI.querySelector(".description p");
+                        sDescription.innerText = data["info"];
+                        const sDesImg = singerUI.querySelector(".description img");
+                        sDesImg.src = data["image"];
+                        const allSingerSongs = singerUI.querySelector(".products");
+                        allSingerSongs.innerHTML = data["songs"];
+                    }
+                    const songsTitle = document.querySelectorAll("#singer .song");
+                    songsTitle.forEach(title => {
+                        let info = title.querySelector('.info h4');
+
+                        info.addEventListener('click', () => {
+                            const songID = title.getAttribute("data");
+                            const song = songDetails[songID];
+                            playImmediate(song);
+                        })
+                        let listIcon = title.querySelector('i.fa-list-ul');
+
+                        listIcon.addEventListener('click', () => {
+                            console.log("Cliked")
+                            const songID = title.getAttribute("data");
+                            const song = songDetails[songID];
+
+                            if (!playingQueue.includes(song)) {
+                                playingQueue.push(song);
+                                alert(`Songs ${song['title']} is added to queue!!`);
+                            }
+                            else {
+                                alert(`Songs ${song['title']} is already in playing queue!!`);
+                            }
+                        })
+                    })
+                }
+            };
+            xmlhttp.open("GET", "./utils/getSingerInfo.php?singerID=" + singerID, true);
+            xmlhttp.send();
+        })
+    });
+}
+
+
+function addToQueue() {
+    const songsTitle = document.querySelectorAll(".song");
+
+    songsTitle.forEach(title => {
+        const songID = title.getAttribute("data");
+        let listIcon = title.querySelector('i.fa-list-ul');
+
+        listIcon.addEventListener('click', () => {
+            console.log("Cliked")
+            const song = songDetails[songID];
+
+            if (!playingQueue.includes(song)) {
+                playingQueue.push(song);
+                alert(`Songs ${song['title']} is added to queue!!`);
+            }
+            else {
+                alert(`Songs ${song['title']} is already in playing queue!!`);
+            }
+        })
+    })
+}
+
 // Load song 
 function loadSong(song) {
     // const song = songDetails[songID];
@@ -34,7 +120,8 @@ function loadSong(song) {
     audio.src = song['audio'];
     coverImg.src = song['img'];
     title.innerText = song['title'];
-    singer.innerText = song['singerName'];
+    singerName.innerText = song['singerName'];
+
 }
 
 // Play song
@@ -44,7 +131,7 @@ function playSong() {
     playBtn.querySelector('i.fas').classList.remove('fa-play');
     playBtn.querySelector('i.fas').classList.add('fa-pause');
     audio.play();
-    console.log(playingQueue);
+    // console.log(playingQueue);
     isPlaying = true;
 }
 
@@ -56,6 +143,7 @@ function playQueue() {
 
 // Play 1 song immediately
 function playImmediate(song) {
+    songIndex = 0;
     playingQueue = [];
     playingQueue.push(song);
     playQueue();
@@ -140,14 +228,18 @@ function search(e) {
 
                 const songsContain = document.querySelector(".songsContain");
                 songsContain.innerHTML = this.responseText;
-                const songs = document.querySelectorAll(".song");
-                songs.forEach(title => {
-                    title.addEventListener('click', () => {
+                const songsTitle = document.querySelectorAll(".song");
+                songsTitle.forEach(title => {
+                    let info = title.querySelector('.info h4');
+
+                    info.addEventListener('click', () => {
                         const songID = title.getAttribute("data");
                         const song = songDetails[songID];
                         playImmediate(song);
                     })
                 })
+                addToQueue();
+                goToSingerPage();
             }
         }
     };
@@ -165,8 +257,10 @@ cards.forEach(card => {
     })
 })
 
-songs.forEach(title => {
-    title.addEventListener('click', () => {
+songsTitle.forEach(title => {
+    let info = title.querySelector('.info h4');
+
+    info.addEventListener('click', () => {
         const songID = title.getAttribute("data");
         const song = songDetails[songID];
         playImmediate(song);
@@ -213,3 +307,5 @@ audio.addEventListener('ended', endSong);
 progressContainer.addEventListener('click', setProgress);
 volumeInfo.addEventListener('click', setVolume);
 inputSearch.addEventListener('input', search);
+addToQueue();
+goToSingerPage();

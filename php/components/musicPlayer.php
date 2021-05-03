@@ -3,7 +3,7 @@
         <img id="imgCover" src="./images/logo.jpg" alt="">
         <div class="musicDetail">
             <h4 id="title"></h4>
-            <h5 id="singer"></h5>
+            <h5 id="singerName"></h5>
         </div>
         <i class="far fa-heart"></i>
     </div>
