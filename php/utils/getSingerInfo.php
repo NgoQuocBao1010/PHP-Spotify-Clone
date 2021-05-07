@@ -22,6 +22,7 @@ if (isset($_GET['singerID'])) {
     $songs = mysqli_fetch_all($result2, MYSQLI_ASSOC);
 
     $test = "<h1>All Songs</h1>";
+    $songids = array();
     if (count($songs) > 0) {
         foreach ($songs as $index => $song) {
             $test = $test . "<div class='song' data='" . $song['id'] . "'>";
@@ -38,12 +39,14 @@ if (isset($_GET['singerID'])) {
             $test = $test .        '<i class="fas fa-list-ul"></i>';
             $test = $test .    '</div>';
             $test = $test .  '</div>';
+            array_push($songids, $song['id']);
         }
     } else {
         echo "<h1>No songs found</h1>";
     }
 
     $singer[0]["songs"] = $test;
+    $singer[0]["songids"] = $songids;
 
     echo json_encode($singer);
 }

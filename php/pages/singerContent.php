@@ -10,11 +10,12 @@ if (isset($_GET['singerID'])) {
     $result = mysqli_query($conn, $singerFilterQuery);
     $singer = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    $singerName = $singer[0]["name"];
-    $singerInfo = $singer[0]["info"];
-    $singerImg = $singer[0]["image"];
+    if (count($singer) > 0) {
+        $singerName = $singer[0]["name"];
+        $singerInfo = $singer[0]["info"];
+        $singerImg = $singer[0]["image"];
 
-    $songsQuery =  "SELECT Songs.id, Songs.title title,
+        $songsQuery =  "SELECT Songs.id, Songs.title title,
                         Songs.filePath audio, Songs.imgPath img,
                         Singers.name singerName, Singers.id singerID
                     FROM Songs 
@@ -22,8 +23,11 @@ if (isset($_GET['singerID'])) {
                     WHERE Singers.id = $singerID
                     ORDER BY Songs.dateAdded DESC";
 
-    $result2 = mysqli_query($conn, $songsQuery);
-    $songs = mysqli_fetch_all($result2, MYSQLI_ASSOC);
+        $result2 = mysqli_query($conn, $songsQuery);
+        $songs = mysqli_fetch_all($result2, MYSQLI_ASSOC);
+    } else {
+        redirect("404.php");
+    }
 }
 ?>
 <div class="cover">
