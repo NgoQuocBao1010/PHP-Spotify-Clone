@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    transition: all .4s ease-out;
+}
+
+
+
+img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: all .4s ease-out;
+}
+
+.username {
+    position: absolute;
+    left: 0;
+    transform: translateX(25%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s ease-out;
+}
+
+.logContainer:hover img {
+    transform: translateX(-50%);
+}
+
+.logContainer:hover .username {
+    opacity: 1;
+    pointer-events: all;
+}
