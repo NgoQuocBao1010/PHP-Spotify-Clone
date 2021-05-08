@@ -1,0 +1,129 @@
+.cover {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px 80px;
+    background: rgba(36, 36, 36, 0.3);
+}
+
+.cover img {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.coverDetail {
+    height: 100%;
+    margin: 0 100px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* background: lightblue; */
+}
+
+.coverDetail h1 {
+    font-family: "Roboto", sans-serif;
+}
+
+.pulse {
+    margin-top: 50px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    position: relative;
+    /* background: #1db954; */
+}
+
+.pulse::before,
+.pulse::after {
+    content: " ";
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    border-radius: 50%;
+    transition: all 500ms ease;
+}
+
+.pulse::before {
+    content: "\f04b";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1.5em;
+    background: #1db954;
+    display: grid;
+    place-items: center;
+    z-index: 10;
+}
+
+.pulse::after {
+    background: #1db954;
+}
+
+.pulse:hover::after {
+    animation: pulsing 1200ms infinite;
+}
+
+@keyframes pulsing {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.65;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+.products,
+.description {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.products {
+    padding: 50px;
+}
+
+.description {
+    width: 90%;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgba(36, 36, 36, 0.3);
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+
+    transition: all 0.3s ease;
+}
+
+.description > * {
+    margin: 20px 30px;
+}
+
+.description:hover {
+    background: rgba(75, 74, 74, 0.3);
+    transform: translateY(-2%);
+}
+
+.desDetail {
+    /* background-color: lightblue; */
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.desDetail p {
+    font-size: 18px;
+    line-height: 140%;
+    /* letter-spacing: 1px; */
+}
+
+.desDetail img {
+    height: 100%;
+    width: 40%;
+}
