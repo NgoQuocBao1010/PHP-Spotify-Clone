@@ -60,17 +60,12 @@ h2 {
     width: 100%;
     outline: none;
     border: none;
-    background: lightcoral;
+    text-align: center;
     font-size: 20px;
     padding: 0.5em;
     border-radius: 15px;
     cursor: pointer;
     transition: all 250ms ease-in;
-}
-
-h2:focus {
-    background: rgb(224, 118, 118);
-    transform: translateY(-5%);
 }
 
 img {
@@ -84,11 +79,12 @@ img {
 }
 
 ul {
+    background: rgb(240, 168, 168);
     margin-top: 5px;
     margin-left: auto;
-    width: 35%;
+    width: 20%;
     list-style: none;
-    transform: translateY(-10%);
+    transform: translate(-50%, -10%);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease-out;
@@ -97,13 +93,12 @@ ul {
 .activeUl {
     opacity: 1;
     pointer-events: all;
-    transform: translateY(0%);
+    transform: translate(-50%, -5%);
 }
 
 li {
-    background: rgb(235, 141, 141);
-    padding: 1rem;
-    border-radius: 500px;
+    padding: 0.5rem;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
