@@ -17,7 +17,12 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
 </head>
 <body>
     <h1>Hello, <?php echo $_SESSION['name'] ?></h1>
-    <a href="logout.php">Logout</a>
+    <nav class="home-nav">
+        <a href="change-password.php">Change Password</a>
+        <a href="logout.php">Logout</a>
+        <a href="edit-user.php">Edit User</a>
+    </nav>
+    
 </body>
 </html>
 

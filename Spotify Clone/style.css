@@ -88,3 +88,10 @@ h1{
 .ca:hover{
     text-decoration: underline;
 }
+
+.home-nav a{
+    padding: 10px;
+    color: #f7bd65;
+    text-transform: uppercase;
+    text-decoration: none;
+}
