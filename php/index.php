@@ -50,7 +50,7 @@ foreach ($songs as $song) {
             <!-- Sidebar -->
             <?php include("./components/sidebar.php"); ?>
             <!-- End sidebar -->
-
+            <div class="logoConatainer"></div>
             <!-- Music UI -->
             <div class="musicContainer" id="home">
                 <?php include("./pages/homeContent.php"); ?>

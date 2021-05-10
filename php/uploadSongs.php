@@ -79,7 +79,7 @@ if (isset($_POST['save'])) {
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
   <title>Files Upload and Download</title>
 </head>
 <style>
