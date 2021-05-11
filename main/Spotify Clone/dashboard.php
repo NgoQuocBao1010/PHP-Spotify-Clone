@@ -1,10 +1,15 @@
 <?php
 session_start();
-$id = $username = $name = '';
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
+$groupID = $username = $name = '';
+if (isset($_SESSION['username'])) {
+    $groupID = $_SESSION['groupID'];
     $username = $_SESSION['username'];
     $name = $_SESSION['name'];
+
+    if ($groupID !== "1") {
+        header("Location: unauthorized.php");
+        exit();
+    }
 } else {
     header("Location: login.php");
     exit();
@@ -17,14 +22,12 @@ if (isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
     <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 
 <body>
-    <h1>Hello, <?php echo $name; ?></h1>
-    <a href="./change-password.php">Change Password</a>
-    <a href="logout.php">Logout</a>
+    Admin moi duoc vo
 </body>
 
 </html>

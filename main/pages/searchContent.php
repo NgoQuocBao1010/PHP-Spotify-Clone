@@ -13,16 +13,7 @@ if (isset($_GET['search'])) {
 }
 
 ?>
-<section>
-    <div class="searchContainer">
-        <div class="searchBox">
-            <input type="text" name="search" spellcheck="false" class="search" placeholder="Artists, songs...">
-            <div class="icon">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-    </div>
-</section>
+<?php include('./components/navbar.php'); ?>
 <section>
     <h3 class="sectionTitle">Songs</h3>
     <div class="songsContain">

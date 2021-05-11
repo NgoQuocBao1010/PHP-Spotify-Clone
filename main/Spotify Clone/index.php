@@ -34,7 +34,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if ($row['username'] === $username && $row['password'] === $password) {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['name'] = $row['name'];
-                $_SESSION['id'] = $row['id'];
+                $_SESSION['groupID'] = $row['groupID'];
                 header("Location: home.php");
                 exit();
             } else {

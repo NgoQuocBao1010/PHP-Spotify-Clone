@@ -30,6 +30,7 @@ if (isset($_GET['singerID'])) {
     }
 }
 ?>
+<?php include('./components/navbar.php'); ?>
 <div class="cover">
     <img src="<?php echo $singerImg; ?>" alt="" />
     <div class="coverDetail">

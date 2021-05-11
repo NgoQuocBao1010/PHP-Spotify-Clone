@@ -5,6 +5,17 @@
 
 
     function showContent(page) {
+        const searchContainers = document.querySelectorAll(".searchContainer");
+
+        searchContainers.forEach(container => {
+            if (page === "search") {
+                container.classList.remove("hide");
+            } else {
+                container.classList.add("hide");
+            }
+        })
+
+
         document.querySelectorAll(".musicContainer").forEach(ui => {
             // ui.style.display = (ui.id !== page) ? 'none' : '';
             if (ui.id !== page) {
