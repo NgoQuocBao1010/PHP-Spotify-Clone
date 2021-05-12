@@ -325,6 +325,10 @@ nav {
     height: 3rem;
     margin-left: auto;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: lightblue;
 }
 
 .logo {
@@ -338,8 +342,10 @@ nav {
     background: white;
     padding: 1rem 0;
     position: absolute;
+    bottom: 0;
+    left: 0;
     width: 400%;
-    transform: translate(-75%, -5%);
+    transform: translate(-75%, 100%);
     background-color: black;
     text-align: center;
     opacity: 0;
@@ -348,7 +354,7 @@ nav {
 }
 
 .logo-active {
-    transform: translate(-75%, 0%);
+    transform: translate(-75%, 105%);
     opacity: 1;
     pointer-events: all;
 }

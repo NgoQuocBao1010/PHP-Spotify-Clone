@@ -1,5 +1,5 @@
 <nav>
-    <div class="searchContainer">
+    <div class="searchContainer hide">
         <div class="searchBox">
             <input type="text" name="search" spellcheck="false" class="search" placeholder="Artists, songs...">
             <div class="icon">
@@ -10,7 +10,7 @@
     <div class="logo-container">
         <img src="./images/users/default.png" alt="" class="logo">
         <ul class="logo-links">
-            <h3>Quốc Bảo</h3>
+            <h3>Guest</h3>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Logout</a></li>
             <li><a href="./uploadSongs.php">Admin Dashboard</a></li>

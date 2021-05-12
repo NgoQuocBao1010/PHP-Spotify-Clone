@@ -26,12 +26,17 @@ let currentVol = 1;
 let playingQueue = [];
 let songIndex = 0;
 
-const profilePic = document.querySelector(".logo");
-const links = document.querySelector(".logo-links");
+const profilePics = document.querySelectorAll(".logo");
 
-profilePic.addEventListener("click", () => {
-    links.classList.toggle(".logo-active");
-});
+profilePics.forEach(pic => {
+    pic.addEventListener("click", () => {
+        const links = document.querySelectorAll(".logo-links");
+
+        links.forEach(link => {
+            link.classList.toggle("logo-active");
+        })
+    });
+})
 
 function goToSingerPage() {
     const singerLinks = document.querySelectorAll(".singerPage");

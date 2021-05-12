@@ -15,7 +15,6 @@
             }
         })
 
-
         document.querySelectorAll(".musicContainer").forEach(ui => {
             // ui.style.display = (ui.id !== page) ? 'none' : '';
             if (ui.id !== page) {
