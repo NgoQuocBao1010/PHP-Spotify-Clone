@@ -12,12 +12,31 @@
 </head>
 
 <body>
-    <div class="logContainer">
-        <img src="../images/singers/ducphuc.png" alt="">
-        <div class="username">
-            Ngô Hồng Quốc Bảo
-        </div>
+    <div class="container">
+        <input type="text" name="search" id="my-search">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
     </div>
 </body>
+<script>
+    const input = document.getElementById("my-search");
+
+    input.addEventListener("input", (e) => {
+        console.log(e.target.value);
+
+        if (e.target.value !== "") {
+            document.querySelectorAll(".box").forEach(box => {
+                box.classList.add("blurNgheThuat");
+            })
+        }
+        else {
+            document.querySelectorAll(".box").forEach(box => {
+                box.classList.remove("blurNgheThuat");
+            })
+        }
+    })
+</script>
 
 </html>
