@@ -312,7 +312,7 @@ body {
 /* Nav bar */
 nav {
     padding: 2rem 2rem;
-    min-height: 10vh;
+    height: 10vh;
     background-color: black;
     display: flex;
     align-items: center;
@@ -363,6 +363,7 @@ nav {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     padding: .5rem 0; 
+    color: #1DB954;
 }
 
 .logo-links li {

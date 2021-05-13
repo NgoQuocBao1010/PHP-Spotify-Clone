@@ -1,1 +1,0 @@
-<h1>U are not allowed to view this page</h1>

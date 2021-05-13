@@ -18,7 +18,7 @@ const volumeInfo = document.querySelector(".volumeInfo");
 const volume = document.querySelector(".volume");
 
 // Input
-const inputSearch = document.querySelector(".search");
+const inputSearchs = document.querySelectorAll(".search");
 
 // checking variables
 let isPlaying = false;
@@ -332,6 +332,8 @@ audio.addEventListener('timeupdate', updateProgess);
 audio.addEventListener('ended', endSong);
 progressContainer.addEventListener('click', setProgress);
 volumeInfo.addEventListener('click', setVolume);
-inputSearch.addEventListener('input', search);
+inputSearchs.forEach(inputSearch => {
+    inputSearch.addEventListener('input', search);
+})
 addToQueue();
 goToSingerPage();
