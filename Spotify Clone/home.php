@@ -20,7 +20,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
     <nav class="home-nav">
         <a href="change-password.php">Change Password</a>
         <a href="logout.php">Logout</a>
-        <a href="edit-user.php">Edit User</a>
+        <a href="adminDashboard.php">Admin Dashboard</a>
     </nav>
     
 </body>

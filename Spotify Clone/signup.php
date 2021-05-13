@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
     }
 
     if (array_filter($errors)) {
-        echo "Co loi";
+        echo "Have errors";
     } else {
         $password = md5($password);
         $sql2 = "INSERT INTO users(username, password, name, groupID) VALUE('$username', '$password', '$name', 2)";
@@ -71,12 +71,8 @@ if (isset($_POST['submit'])) {
         <label>Name</label>
         <input type="text" name="name" placeholder="Name" value="<?php echo $name; ?>"><br>
 
-
-
         <label>User Name</label>
         <input type="text" name="username" placeholder="User Name" value="<?php echo $username; ?>"><br>
-
-
 
         <label>Password</label>
         <input type="password" name="password" placeholder="Password" value="<?php echo $password; ?>"><br>

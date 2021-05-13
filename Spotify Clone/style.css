@@ -34,6 +34,12 @@ input {
     border-radius: 5px;
 }
 
+input[type="checkbox" i]{
+    display: inline;
+    padding: 15px;
+    float: left;
+}
+
 label {
     color: #888;
     font-size: 18px;
@@ -94,4 +100,8 @@ h1{
     color: #f7bd65;
     text-transform: uppercase;
     text-decoration: none;
+}
+
+td{
+    text-align: center;
 }
