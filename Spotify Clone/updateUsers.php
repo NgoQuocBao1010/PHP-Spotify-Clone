@@ -17,6 +17,8 @@ if(isset($_POST['update'])){
     $updateSql = "UPDATE users SET username = '$username', name = '$name' WHERE id=$id ";
     $result1 = mysqli_query($conn,$updateSql);
     if ($result1) header("Location: editUser.php");
+}else {
+    echo <script>alert('Invalid Update Informations');</script>
 }
 ?>
 
@@ -40,7 +42,9 @@ if(isset($_POST['update'])){
         <input type="text" name="username" placeholder="User Name" value=<?php echo $data['username'] ?>><br>
 
         <label>Admin</label>
-        <input type="checkbox" name="authorize">
+        <input type="checkbox" name="authorize" value='<?php echo $data['id']; ?>'><br>
+
+        <a href="editUser.php" class="ca">BACK</a>
         
         <button type="submit" name="update">Update</button>
     </form>

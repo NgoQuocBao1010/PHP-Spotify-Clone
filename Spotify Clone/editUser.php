@@ -1,5 +1,6 @@
 <?php
 include ("connection.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ include ("connection.php");
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo $row['groupID']; ?></td>
                 <td><a href=updateUsers.php?id=<?php echo $row['id']?>>Update</a></td>
-                <td><a href="#">Delete</a></td>
+                <td><a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
             </tr>
         <?php
         }

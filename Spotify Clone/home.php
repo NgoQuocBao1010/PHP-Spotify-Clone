@@ -1,10 +1,14 @@
 <?php
 session_start();
-
-if(isset($_SESSION['id']) && isset($_SESSION['username'])){
-
-
-
+$id = $username = $name = '';
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $username = $_SESSION['username'];
+    $name = $_SESSION['name'];
+} else {
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,19 +20,14 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello, <?php echo $_SESSION['name'] ?></h1>
+    <h1>Hello, <?php echo $name ?></h1>
     <nav class="home-nav">
         <a href="change-password.php">Change Password</a>
         <a href="logout.php">Logout</a>
         <a href="adminDashboard.php">Admin Dashboard</a>
+        
     </nav>
     
 </body>
 </html>
 
-<?php
-}else{
-    header("Location: login.php");
-    exit();
-}
-?>

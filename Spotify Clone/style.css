@@ -105,3 +105,21 @@ h1{
 td{
     text-align: center;
 }
+
+.dashboard{
+    display: block;
+    /* justify-content: center;
+    flex-direction: row; */
+}
+
+.dashboard a{
+    margin: auto 40px;
+    padding: 10px;
+    color: #f7bd65;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.dashboard label {
+    color: #f7bd65;
+}
