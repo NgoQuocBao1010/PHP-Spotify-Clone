@@ -53,7 +53,7 @@ function goToSingerPage() {
                 if (this.readyState == 4 && this.status == 200) {
                     if (this.responseText !== "") {
                         var data = JSON.parse(this.responseText)[0];
-                        // console.log(data);
+                        console.log(data);
 
                         const singerUI = document.getElementById("singer");
                         const sImg = singerUI.querySelector(".cover img");
@@ -71,6 +71,8 @@ function goToSingerPage() {
                         data["songids"].forEach((id) => {
                             tempSongs.push(songDetails[id])
                         })
+
+                        // Replace new pulse btn
                         const pulseBtn = document.querySelector(".pulse");
                         const newPulseBtn = pulseBtn.cloneNode(true);
                         pulseBtn.parentNode.replaceChild(newPulseBtn, pulseBtn);
@@ -243,6 +245,7 @@ function setVolume(e) {
 // Search songs in realtime
 function search(e) {
     let filterTexts = e.target.value;
+    // console.log(filterTexts);
     window.history.pushState("", "", pageUrl + "/" + "search.php?search=" + filterTexts);
 
     var xmlhttp = new XMLHttpRequest();
@@ -250,7 +253,7 @@ function search(e) {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText !== "") {
                 // var data = JSON.parse(this.responseText);
-                console.log(this.responseText);
+                // console.log(data);
 
                 const songsContain = document.querySelector(".songsContain");
                 songsContain.innerHTML = this.responseText;

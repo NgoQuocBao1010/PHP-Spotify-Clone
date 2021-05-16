@@ -30,7 +30,7 @@
             const page = button.getAttribute("page-data");
 
             if (page === "home") {
-                window.history.pushState("", "", pageUrl + "/" + "index" + ".php");
+                window.history.pushState("", "", pageUrl + "/" + "index.php");
             } else {
                 window.history.pushState("", "", pageUrl + "/" + page + ".php");
             }

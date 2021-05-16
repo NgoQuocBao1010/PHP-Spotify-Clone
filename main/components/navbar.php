@@ -10,10 +10,16 @@
     <div class="logo-container">
         <img src="./images/users/default.png" alt="" class="logo">
         <ul class="logo-links">
-            <h3>Guest</h3>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Logout</a></li>
-            <li><a href="./uploadSongs.php">Admin Dashboard</a></li>
+            <h3><?php echo $username; ?></h3>
+            <?php if ($authenticated) : ?>
+                <li><a href="#">Profile</a></li>
+                <li><a href="./auth/logout.php">Logout</a></li>
+                <?php if ($admin) : ?>
+                    <li><a href="./uploadSongs.php">Admin Dashboard</a></li>
+                <?php endif; ?>
+            <?php else : ?>
+                <li><a href="./auth/login.php">Login</a></li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

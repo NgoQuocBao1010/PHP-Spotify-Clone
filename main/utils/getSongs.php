@@ -1,5 +1,6 @@
 <?php
 include("./dbConnection.php");
+
 if (isset($_GET['filter'])) {
     $filterTexts = $_GET['filter'];
 

@@ -1,7 +1,18 @@
 <?php
 include("./utils/getUrl.php");
-
 include("./utils/dbConnection.php");
+session_start();
+
+$id = $name = '';
+$username = 'Guest';
+$authenticated = $admin = false;
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $username = $_SESSION['username'];
+    $admin = $_SESSION['admin'];
+    $name = $_SESSION['name'];
+    $authenticated = true;
+}
 
 function redirect($url)
 {
