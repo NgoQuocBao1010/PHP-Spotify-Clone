@@ -13,12 +13,17 @@ if(isset($_POST['update'])){
 
     $name = $_POST['name'];
     $username = $_POST['username'];
+    $checkbox = false;
 
-    $updateSql = "UPDATE users SET username = '$username', name = '$name' WHERE id=$id ";
+    if (isset($_POST['authorize'])) {
+        $checkbox = true;
+    }
+
+    $groupID = ($checkbox) ? 1 : 2;
+
+    $updateSql = "UPDATE users SET username = '$username', name = '$name', groupID=$groupID WHERE id=$id";
     $result1 = mysqli_query($conn,$updateSql);
-    if ($result1) header("Location: editUser.php");
-}else {
-    echo <script>alert('Invalid Update Informations');</script>
+    if ($result1) header("Location: editUser.php"); 
 }
 ?>
 
@@ -42,7 +47,11 @@ if(isset($_POST['update'])){
         <input type="text" name="username" placeholder="User Name" value=<?php echo $data['username'] ?>><br>
 
         <label>Admin</label>
-        <input type="checkbox" name="authorize" value='<?php echo $data['id']; ?>'><br>
+        <input type="checkbox" name="authorize" 
+        <?php if ($data['groupID'] == 1): ?>
+        checked>
+        <?php endif; ?>
+        <br>
 
         <a href="editUser.php" class="ca">BACK</a>
         

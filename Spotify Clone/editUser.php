@@ -1,6 +1,8 @@
 <?php
 include ("connection.php");
-
+$sql = "SELECT * FROM users";
+$result = mysqli_query($conn, $sql);
+$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,7 @@ include ("connection.php");
             <th colspan="6">User Info</th>
         </tr>
         <tr>
-            <th>ID</th>
+            <th>STT</th>
             <th>Username</th>
             <th>Name</th>
             <th>GroupId</th>
@@ -26,24 +28,19 @@ include ("connection.php");
         </tr>
     
 
-        <?php  
-        $sql = "SELECT * FROM users";
-        $result = mysqli_query($conn, $sql);
-        
-        while($row = mysqli_fetch_array($result))
-            {
-        ?>
-            <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['username']; ?></td>
-                <td><?php echo $row['name']; ?></td>
-                <td><?php echo $row['groupID']; ?></td>
-                <td><a href=updateUsers.php?id=<?php echo $row['id']?>>Update</a></td>
-                <td><a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
-            </tr>
-        <?php
-        }
-        ?>
+        <?php foreach ($users as $index => $user): ?>
+        <tr>
+            <td><?php echo $index + 1; ?></td>
+            <td><?php echo $user['username']; ?></td>
+            <td><?php echo $user['name']; ?></td>
+            <td><?php echo $user['groupID']; ?></td>
+            <td><a href=updateUsers.php?id=<?php echo $user['id']?>>Update</a></td>
+            <td><a href="delete.php?id=<?php echo $user['id'] ?>">Delete</a></td>
+        </tr>
+        <?php endforeach; ?>
+
+
+
             
     </table>
 </body>
