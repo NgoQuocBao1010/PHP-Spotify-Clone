@@ -19,16 +19,16 @@ if (isset($_POST['submit'])) {
 
 
     if (empty($username)) {
-        $errors['username'] = "Username cant be empty!!!";
+        $errors['username'] = "Username can not be empty";
     }
     if (empty($name)) {
-        $errors['name'] = "Name cant be empty!!!";
+        $errors['name'] = "Name can not be empty";
     }
     if (empty($password)) {
-        $errors['password'] = "password cant be empty!!!";
+        $errors['password'] = "Password can not be empty";
     }
     if (empty($re_password)) {
-        $errors['re_password'] = "re password cant be empty!!!";
+        $errors['re_password'] = "Confirm password can not be empty";
     }
     if ($password !== $re_password) {
         $errors['matchPass'] = "The confirmation password does not match";

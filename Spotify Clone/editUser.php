@@ -34,7 +34,7 @@ $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <td><?php echo $user['username']; ?></td>
             <td><?php echo $user['name']; ?></td>
             <td><?php echo $user['groupID']; ?></td>
-            <td><a href=updateUsers.php?id=<?php echo $user['id']?>>Update</a></td>
+            <td><a href=updateUser.php?id=<?php echo $user['id']?>>Update</a></td>
             <td><a href="delete.php?id=<?php echo $user['id'] ?>">Delete</a></td>
         </tr>
         <?php endforeach; ?>

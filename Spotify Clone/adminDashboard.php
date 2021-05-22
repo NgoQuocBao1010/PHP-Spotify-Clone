@@ -14,10 +14,10 @@
         <a href="editUser.php"><i class="fas fa-users fa-7x"></i></a>
 
         <!-- <label>Song</label><br> -->
-        <a href="#"><i class="fas fa-music fa-7x"></i></a>
+        <a href="editSong.php"><i class="fas fa-music fa-7x"></i></a>
 
         <!-- <label>Singers</label><br> -->
-        <a href="#"><i class="fas fa-microphone fa-7x"></i></a>
+        <a href="editSinger.php"><i class="fas fa-microphone fa-7x"></i></a>
     </div>
     
     
