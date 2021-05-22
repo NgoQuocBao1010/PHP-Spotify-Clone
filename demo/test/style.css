@@ -151,6 +151,7 @@ body {
     background: black;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .musicPlayerContainer * {
@@ -239,14 +240,27 @@ body {
     transition: width 0.1s linear;
 }
 
-.volumeContainer {
+.funcContainer {
     width: 25%;
-    justify-content: space-evenly;
+    display: flex;
+    padding: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .volumeContainer i {
     font-size: 20px;
-    transform: translateX(100%);
+    padding: 0 20px;
+    cursor: pointer;
+    /* transform: translateX(100%); */
+}
+
+.volumeContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .volumeInfo {
@@ -260,6 +274,70 @@ body {
     height: 4px;
     padding: 0;
     background-color: lightgreen;
+}
+
+#playtist {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.modal {
+    position: absolute;
+    min-height: 20vh;
+    padding: 3rem 0;
+    top: 0;
+    right: 0;
+    width: 25%;
+    pointer-events: none;
+    opacity: 0;
+    /* opacity: 0; */
+    transform: translateY(-80%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    overflow-y: scroll;
+    transition: all 0.4s ease-in;
+}
+
+.modal.modal-active {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.modalTitle {
+    margin: 1rem 0;
+    display: flex;
+}
+
+.modalTitle i {
+    padding: 0 20px;
+    cursor: pointer;
+    transform: rotate(180deg);
+}
+
+.playing-songs {
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.playing-songs li {
+    width: 100%;
+    padding: 0.5rem 3rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.playing-songs li:hover {
+    background: rgb(70, 68, 68);
 }
 /* End musicplayer section */
 

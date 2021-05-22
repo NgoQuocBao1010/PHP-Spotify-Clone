@@ -148,3 +148,15 @@ mute.addEventListener("click", () => {
 audio.addEventListener("timeupdate", updateProgess);
 progressContainer.addEventListener("click", setProgress);
 volumeInfo.addEventListener("click", setVolume);
+
+const playingQueueIcon = document.getElementById("playtist");
+playingQueueIcon.addEventListener("click", () => {
+    const modal = document.querySelector(".modal");
+    modal.classList.toggle("modal-active");
+});
+
+const collaspIcon = document.querySelector(".fa-chevron-up");
+collaspIcon.addEventListener("click", () => {
+    const modal = document.querySelector(".modal");
+    modal.classList.remove("modal-active");
+});
