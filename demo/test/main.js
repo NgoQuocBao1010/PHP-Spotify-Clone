@@ -151,12 +151,45 @@ volumeInfo.addEventListener("click", setVolume);
 
 const playingQueueIcon = document.getElementById("playtist");
 playingQueueIcon.addEventListener("click", () => {
-    const modal = document.querySelector(".modal");
-    modal.classList.toggle("modal-active");
+    const modal = document.querySelector(".queue");
+    modal.classList.toggle("queue-active");
 });
 
 const collaspIcon = document.querySelector(".fa-chevron-up");
 collaspIcon.addEventListener("click", () => {
-    const modal = document.querySelector(".modal");
-    modal.classList.remove("modal-active");
+    const modal = document.querySelector(".queue");
+    modal.classList.remove("queue-active");
+});
+
+const queueSongs = document.querySelectorAll(".playing-songs li");
+queueSongs.forEach(song => {
+    song.addEventListener("click", () => {
+        const nowPlayingSong = document.querySelector("li.playing");
+
+        if (song === nowPlayingSong) {
+            console.log("Nothing change");
+        }
+        else {
+            nowPlayingSong.classList.remove("playing");
+            song.classList.add("playing");
+        }
+    });
+});
+
+const heart = document.querySelector(".fa-heart");
+heart.addEventListener("click", () => {
+    const loginModal = document.querySelector(".login-modal");
+    const pageContainer = document.querySelector(".container");
+
+    pageContainer.classList.add("blur");
+    loginModal.classList.add("active");
+});
+
+const closeLogin = document.querySelector(".login-modal .close");
+closeLogin.addEventListener("click", () => {
+    const loginModal = document.querySelector(".login-modal");
+    const pageContainer = document.querySelector(".container");
+
+    pageContainer.classList.remove("blur");
+    loginModal.classList.remove("active");
 });
