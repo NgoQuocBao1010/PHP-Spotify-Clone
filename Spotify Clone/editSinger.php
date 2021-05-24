@@ -21,6 +21,7 @@ $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </tr>
         <tr>
             <th>STT</th>
+            <th>Images</th>
             <th>Name</th>
             <th>Info</th>
             <th colspan="3">Operations</th>
@@ -30,11 +31,11 @@ $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <?php foreach ($singers as $index => $singer): ?>
         <tr>
             <td><?php echo $index + 1; ?></td>
+            <td><img style="width: 50px; height: 50px;" src="<?php echo $singer['image'] ?>"></td>
             <td><?php echo $singer['name']; ?></td>
             <td><?php echo $singer['info']; ?></td>
-            
-            <td><a href=updateSinger.php?id=<?php echo $singer['id']?>>Update</a></td>
-            <td><a href="delete.php?id=<?php echo $singer['id'] ?>">Delete</a></td>
+            <td><a href="insertSinger.php?id=<?php echo $singer['id']?>">Update</a></td>
+            <td><a href="deleteSinger.php?id=<?php echo $singer['id'] ?>">Delete</a></td>
         </tr>
         <?php endforeach; ?>
 

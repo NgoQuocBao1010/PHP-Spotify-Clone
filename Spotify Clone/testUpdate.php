@@ -28,7 +28,7 @@ $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <th>STT</th>
             <th>Username</th>
             <th>Name</th>
-            <th>GroupId</th>
+            <th>Admin</th>
             <th colspan="2">Operations</th>
         </tr>
     
@@ -38,7 +38,8 @@ $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <td><?php echo $index + 1; ?></td>
             <td><?php echo $user['username']; ?></td>
             <td><?php echo $user['name']; ?></td>
-            <td><input style="width: 30px;" type="checkbox" name="<?php echo $user['id'] ?>" id="<?php echo $user['id'] ?>"
+            <div class="checkbox-style"></div>
+            <td><input type="checkbox" name="<?php echo $user['id'] ?>" id="<?php echo $user['id'] ?>"
             <?php if ( $user['groupID'] == 1): ?>
             checked
             <?php endif; ?>

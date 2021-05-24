@@ -4,6 +4,10 @@ $getSingers = "SELECT * from Singers";
 $result = mysqli_query($conn, $getSingers);
 $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+$getimages = "SELECT * FROM songs";
+$result1 = mysqli_query($conn, $getimages);
+$songs = mysqli_fetch_all($result1, MYSQLI_ASSOC);
+
 $errors = array('title' => '', 'mp3' => '', 'img' => '');
 $title = $mp3 = $img = $singerID = '';
 
@@ -69,10 +73,17 @@ if (isset($_POST['submit'])) {
         if (!mysqli_query($conn, $addReviewerQuery)) {
             echo  "Error: " . "<br>" . mysqli_error($conn);
         } else {
-            header("Location: adminDashboard.php");
+            header("Location: editSong.php");
         }
     }
 }
+if(isset($_POST['delete'])){
+    $songSelect = $_POST['songSelect'];
+    $sql = "DELETE FROM songs WHERE `id` = $songSelect ";
+    $res = mysqli_query($conn, $sql);
+    if ($res) header("Location: editSong.php");
+}
+
 
 ?>
 
@@ -89,7 +100,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="add-info">
-        <h3 class="notice">UPLOAD IMAGES</h3>
+        <h3 class="notice">UPLOAD SONGS</h3>
         <form class="form-insert" action="editSong.php" method="POST" enctype="multipart/form-data">
             <?php foreach ($errors as $error) : ?>
                 <p class="error"><?php echo $error; ?></p>
@@ -108,6 +119,19 @@ if (isset($_POST['submit'])) {
             <input type="file" name="img" accept="image/*">
             <button type="submit" name="submit">Save</button>
         </form>
+    </div>
+    <div class="add-info">
+        <h3 class="notice">UPDATE SONGS</h3>
+        <form class="form-insert" method="POST" enctype="multipart/form-data">
+            <select name="songSelect">
+                <?php foreach ($songs as $song) : ?>
+                    <option value="<?php echo $song['id'] ?>"><?php echo $song['title']; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" name="display">Update</button>
+            <button style="background: #B22222; float: right;" type="submit" name="delete" value="<?php echo $song['id']; ?>">Delete</button>
+        </form>
+
     </div>
 
 </body>
