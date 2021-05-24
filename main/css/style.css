@@ -32,6 +32,11 @@ body {
     flex-direction: column;
 }
 
+.container.blur {
+    filter: blur(10px);
+    pointer-events: none;
+}
+
 .content {
     display: flex;
     width: 100%;
@@ -76,6 +81,8 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    height: 35%;
     /* background: lightblue; */
 }
 
@@ -202,6 +209,10 @@ body {
 
 .musicDetail h5 {
     color: rgba(235, 221, 221, 0.521);
+}
+
+.musicInfo i {
+    cursor: pointer;
 }
 
 
@@ -490,5 +501,73 @@ nav {
 
 .logo-links a:hover {
     transform: scale(1.05);
+}
+
+
+/* Login modal */
+.login-modal {
+    position: absolute;
+    width: 50%;
+    height: 50vh;
+    border-radius: 5px;
+    background: rgb(24, 24, 24);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    transition: all .5s ease-in-out;
+}
+
+.login-modal.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%);
+}
+
+.login-modal__logo,
+.login-modal__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-modal__info {
+    position: relative;
+}
+
+.login-modal__logo i {
+    font-size: 150px;
+    color: #1DB954;
+    margin: 20px 0;
+}
+
+.login-modal__info .login {
+    padding: 5px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    background-color: #1DB954;
+}
+
+.login-modal__info .signup {
+    color: white;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.login-modal .close {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    font-size: 30px;
+    transform: rotate(45deg);
 }
 

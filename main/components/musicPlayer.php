@@ -37,22 +37,6 @@
             <i class="fas fa-chevron-up"></i>
         </div>
         <ul class="playing-songs">
-            <!-- <li>
-                <div class="song-info">1. Chung ta cua hien tai</div>
-                <div class="beat-container">
-                    <div class="stroke"></div>
-                    <div class="stroke"></div>
-                    <div class="stroke"></div>
-                </div>
-            </li>
-            <li class="playing">
-                <div class="song-info">2. Anh nang cua anh</div>
-                <div class="beat-container">
-                    <div class="stroke"></div>
-                    <div class="stroke"></div>
-                    <div class="stroke"></div>
-                </div>
-            </li> -->
         </ul>
     </div>
 </div>

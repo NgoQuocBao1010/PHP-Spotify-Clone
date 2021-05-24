@@ -1,18 +1,7 @@
 <?php
 include("./utils/getUrl.php");
 include("./utils/dbConnection.php");
-session_start();
-
-$id = $name = '';
-$username = 'Guest';
-$authenticated = $admin = false;
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-    $username = $_SESSION['username'];
-    $admin = $_SESSION['admin'];
-    $name = $_SESSION['name'];
-    $authenticated = true;
-}
+include("./auth/auth.php");
 
 function redirect($url)
 {
@@ -57,6 +46,18 @@ foreach ($songs as $song) {
 </head>
 
 <body>
+    <div class="login-modal">
+        <div class="login-modal__logo">
+            <i class="fab fa-spotify"></i>
+            <h2>Not Spotify</h2>
+        </div>
+        <div class="login-modal__info">
+            <p>You have to login to use this feature.</p>
+            <a href="./auth/login.php" class="login">Login</a>
+            <a href="./auth/signup.php" class="signup">Haven't create an account yet?</a>
+            <div class="close">+</div>
+        </div>
+    </div>
     <div class="container">
         <div class="content">
             <!-- Sidebar -->
@@ -70,6 +71,11 @@ foreach ($songs as $song) {
             <div class="musicContainer hide" id="search">
                 <?php include("./pages/searchContent.php"); ?>
             </div>
+            <div class="musicContainer hide" id="favourites">
+                <?php if ($authenticated) : ?>
+                    <?php include("./pages/favContent.php"); ?>
+                <?php endif; ?>
+            </div>
             <div class="musicContainer hide" id="singer">
                 <?php include("./pages/singerContent.php"); ?>
             </div>
@@ -81,8 +87,11 @@ foreach ($songs as $song) {
 </body>
 <script>
     let songDetails = JSON.parse('<?php echo json_encode($formatSongs); ?>');
+    let authenticated = JSON.parse('<?php echo json_encode($authenticated); ?>');
 </script>
-<script src="main.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/playingQueue.js"></script>
+<script src="./js/loginRequired.js"></script>
 <?php include("./utils/changePageJs.php"); ?>
 <script>
     // const musicUI = document.querySelector(".musicContainer");

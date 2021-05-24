@@ -102,6 +102,7 @@ function goToSingerPage() {
                             if (!playingQueue.includes(song)) {
                                 playingQueue.push(song);
                                 alert(`Songs ${song['title']} is added to queue!!`);
+                                resetPlayingQueue();
                             }
                             else {
                                 alert(`Songs ${song['title']} is already in playing queue!!`);
@@ -131,6 +132,7 @@ function addToQueue() {
             if (!playingQueue.includes(song)) {
                 playingQueue.push(song);
                 alert(`Songs ${song['title']} is added to queue!!`);
+                resetPlayingQueue(); // refresh the playing queue
             }
             else {
                 alert(`Songs ${song['title']} is already in playing queue!!`);
@@ -148,7 +150,6 @@ function loadSong(song) {
     coverImg.src = song['img'];
     title.innerText = song['title'];
     singerName.innerText = song['singerName'];
-
 }
 
 // Play song
@@ -166,6 +167,7 @@ function playSong() {
 function playQueue() {
     loadSong(playingQueue[songIndex]);
     playSong();
+    resetPlayingQueue();
 }
 
 // Play 1 song immediately
@@ -174,6 +176,7 @@ function playImmediate(song) {
     playingQueue = [];
     playingQueue.push(song);
     playQueue();
+    resetPlayingQueue();
 }
 
 // Pause song
@@ -193,6 +196,7 @@ function nextSong() {
 
     loadSong(playingQueue[songIndex]);
     playSong();
+    resetPlayingQueue();
 }
 
 function prevSong() {
@@ -204,6 +208,7 @@ function prevSong() {
 
     loadSong(playingQueue[songIndex]);
     playSong();
+    resetPlayingQueue();
 }
 
 // Update song progress
@@ -339,79 +344,3 @@ inputSearchs.forEach(inputSearch => {
 })
 addToQueue();
 goToSingerPage();
-
-
-// ----------------------------------- PLAYING QUEUE ----------------------------------- //
-const addPlayingSong = (song, index) => {
-    const newSong = document.createElement("li");
-
-    if (index === songIndex) {
-        newSong.classList.add("playing");
-    }
-    newSong.setAttribute("song-index", index);
-
-    newSong.innerHTML = `
-        <div class="song-info">${index + 1}. ${song.title}</div>
-        <div class="beat-container">
-            <div class="stroke"></div>
-            <div class="stroke"></div>
-            <div class="stroke"></div>
-        </div>
-    `;
-    newSong.addEventListener("click", () => {
-        const nowPlayingSong = document.querySelector("li.playing");
-
-        if (newSong === nowPlayingSong) {
-            console.log("Nothing change");
-        }
-        else {
-            nowPlayingSong.classList.remove("playing");
-            newSong.classList.add("playing");
-            songIndex = index;
-            loadSong(playingQueue[songIndex]);
-            playSong();
-        }
-    });
-
-    return newSong;
-}
-
-
-const playingQueueIcon = document.getElementById("playtist");
-playingQueueIcon.addEventListener("click", () => {
-    const modal = document.querySelector(".queue");
-    modal.classList.toggle("queue-active");
-
-
-    const songsContainer = modal.querySelector('.playing-songs');
-    songsContainer.innerHTML = "";
-
-    if (playingQueue.length !== 0) {
-        playingQueue.forEach((song, index) => {
-            const newSong = addPlayingSong(song, index);
-            songsContainer.appendChild(newSong);
-        });
-    }
-});
-
-const collaspIcon = document.querySelector(".fa-chevron-up");
-collaspIcon.addEventListener("click", () => {
-    const modal = document.querySelector(".queue");
-    modal.classList.remove("queue-active");
-});
-
-
-const queueSongs = document.querySelectorAll(".playing-songs li");
-queueSongs.forEach(song => {
-    song.addEventListener("click", () => {
-        const nowPlayingSong = document.querySelector("li.playing");
-
-        if (song === nowPlayingSong) {
-            console.log("Nothing change");
-        }
-        else {
-            nowPlayingSong.classList.remove("playing");
-            song.classList.add("playing");
-        }
-    });
-})
