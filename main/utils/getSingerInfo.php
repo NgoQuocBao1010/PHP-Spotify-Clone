@@ -8,7 +8,7 @@ if (isset($_GET['singerID'])) {
                     WHERE id=$singerID";
 
     $result = mysqli_query($conn, $singerFilterQuery);
-    $singer = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $singer = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
     $songsQuery =  "SELECT Songs.id, Songs.title title,
                         Songs.filePath audio, Songs.imgPath img,
@@ -21,32 +21,7 @@ if (isset($_GET['singerID'])) {
     $result2 = mysqli_query($conn, $songsQuery);
     $songs = mysqli_fetch_all($result2, MYSQLI_ASSOC);
 
-    $test = "<h1>All Songs</h1>";
-    $songids = array();
-    if (count($songs) > 0) {
-        foreach ($songs as $index => $song) {
-            $test = $test . "<div class='song' data='" . $song['id'] . "'>";
-            $test = $test .    '<div class="info">';
-            $test = $test .        "<h4>" . $index + 1 . "</h4>";
-            $test = $test .        '<img src="' . $song['img'] . '">';
-            $test = $test .        '<div class="detail">';
-            $test = $test .            '<h4>' . $song['title'] . '</h4>';
-            $test = $test .            '<h5 data-singer="' . $song['singerID'] . '">' . $song['singerName'] . '</h5>';
-            $test = $test .        '</div>';
-            $test = $test .    '</div>';
-            $test = $test .     '<div class="func">';
-            $test = $test .        '<i class="far fa-heart"></i>';
-            $test = $test .        '<i class="fas fa-list-ul"></i>';
-            $test = $test .    '</div>';
-            $test = $test .  '</div>';
-            array_push($songids, $song['id']);
-        }
-    } else {
-        echo "<h1>No songs found</h1>";
-    }
-
-    $singer[0]["songs"] = $test;
-    $singer[0]["songids"] = $songids;
+    $singer["songs"] = $songs;
 
     echo json_encode($singer);
 }

@@ -16,7 +16,6 @@ $getAllSongsQuery = "SELECT Songs.id, Songs.title title,
                     LEFT JOIN Singers on Singers.id = Songs.singerID
                     ORDER BY Songs.dateAdded DESC";
 
-
 $result = mysqli_query($conn, $getAllSongsQuery);
 $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -89,9 +88,10 @@ foreach ($songs as $song) {
     let songDetails = JSON.parse('<?php echo json_encode($formatSongs); ?>');
     let authenticated = JSON.parse('<?php echo json_encode($authenticated); ?>');
 </script>
-<script src="./js/main.js"></script>
+<script src="./js/singer.js"></script>
 <script src="./js/playingQueue.js"></script>
 <script src="./js/loginRequired.js"></script>
+<script src="./js/main.js"></script>
 <?php include("./utils/changePageJs.php"); ?>
 <script>
     // const musicUI = document.querySelector(".musicContainer");
