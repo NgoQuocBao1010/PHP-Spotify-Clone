@@ -4,11 +4,8 @@ $getSingers = "SELECT * from Singers";
 $result = mysqli_query($conn, $getSingers);
 $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-
 session_start();
-if ($_SESSION['id']) {
-    $id = $_SESSION['id'];
-}
+
 
 $titleUpdate = "";
 
@@ -93,13 +90,6 @@ if (isset($_POST['submit'])) {
 }
 
 
-// if (isset($_POST['delete'])) {
-//     $songSelect = $_POST['songSelect'];
-//     $sql = "DELETE FROM songs WHERE `id` = $songSelect ";
-//     $res = mysqli_query($conn, $sql);
-//     if ($res) header("Location: editSong.php");
-// }
-
 
 ?>
 
@@ -112,6 +102,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Song</title>
     <link rel="stylesheet" href="song.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -132,8 +123,10 @@ if (isset($_POST['submit'])) {
             <label>MP3 File</label>
             <input type="file" name="mp3" accept="audio/*">
             <label>Images</label>
-            <input type="file" name="img" accept="image/*">
+            <input type="file" name="img" accept="image/*"><br>
+            <a href="editSong.php" class="ca">BACK</a>
             <button type="submit" name="submit">SUBMIT</button>
+            
         </form>
     </div>
 

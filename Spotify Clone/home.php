@@ -1,7 +1,7 @@
 <?php
 session_start();
 $id = $username = $name = '';
-$admin = false;
+$admin = true;
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $username = $_SESSION['username'];

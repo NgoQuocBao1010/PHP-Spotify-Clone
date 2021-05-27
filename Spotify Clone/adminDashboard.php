@@ -2,9 +2,6 @@
 include ("connection.php");
 session_start();
 
-if($_SESSION['id']){
-    $id = $_SESSION['id'];
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +15,7 @@ if($_SESSION['id']){
 <body>
     <div class="dashboard">
         <!-- <label>Users</label><br> -->
-        <a href="editUser.php"><i class="fas fa-users fa-7x"></i></a>
+        <a href="testUpdate.php"><i class="fas fa-users fa-7x"></i></a>
 
         <!-- <label>Song</label><br> -->
         <a href="editSong.php"><i class="fas fa-music fa-7x"></i></a>

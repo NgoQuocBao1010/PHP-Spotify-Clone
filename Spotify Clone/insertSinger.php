@@ -1,9 +1,7 @@
 <?php
 include('connection.php');
 session_start();
-if($_SESSION['id']){
-    $id = $_SESSION['id'];
-}
+
 
 $name = $infoSinger = "";
 
@@ -74,14 +72,14 @@ if (isset($_POST['submit'])) {
         if (isset($_GET['id'])) {
             $updateSinger = "UPDATE singers SET name = '$singername', info = '$info', image = '$images' WHERE id =$id";
             $res3 = mysqli_query($conn, $updateSinger);
-            header("Location: adminDashboard.php");
+            header("Location: editSinger.php");
         } else {
             $insertSinger = "INSERT INTO singers(name, info, image)
             VALUES ('$singername', '$info', '$images')";
             if (!mysqli_query($conn, $insertSinger)) {
                 echo  "Error: " . "<br>" . mysqli_error($conn);
             } else {
-                header("Location: adminDashboard.php");
+                header("Location: editSinger.php");
             }
         }
     }

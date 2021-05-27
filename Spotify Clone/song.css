@@ -12,6 +12,14 @@ body{
     flex-direction: column;
 }
 
+.ca {
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #444;
+  }
+
 .notice{
     color: #fff;
     display: block;
@@ -51,6 +59,7 @@ body{
 }
 
 .form-insert button{
+    float: right;
     background: #555;
     padding: 10px 15px;
     color: #fff;
@@ -79,4 +88,10 @@ body{
     width: 95%;
     border-radius: 5px;
     margin: 20px auto;
+}
+
+.link{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
 }
