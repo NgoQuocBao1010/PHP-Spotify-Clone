@@ -1,10 +1,12 @@
 <?php
 session_start();
 $id = $username = $name = '';
+$admin = false;
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $username = $_SESSION['username'];
     $name = $_SESSION['name'];
+    $admin = $_SESSION['admin'];
 } else {
     header("Location: login.php");
     exit();
@@ -24,8 +26,9 @@ if (isset($_SESSION['id'])) {
     <nav class="home-nav">
         <a href="change-password.php">Change Password</a>
         <a href="logout.php">Logout</a>
+        <?php if ($admin): ?>
         <a href="adminDashboard.php">Admin Dashboard</a>
-        
+        <?php endif; ?>
     </nav>
     
 </body>

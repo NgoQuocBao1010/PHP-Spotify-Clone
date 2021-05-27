@@ -1,5 +1,10 @@
 <?php
 include('connection.php');
+session_start();
+if($_SESSION['id']){
+    $id = $_SESSION['id'];
+}
+
 $name = $infoSinger = "";
 
 if (isset($_GET['id'])) {
@@ -14,17 +19,6 @@ if (isset($_GET['id'])) {
 
 $errors = array('singername' => '', 'info' => '', 'img' => '');
 $singername = $img = $info = '';
-
-
-
-// if (isset($_POST['submit'])) {
-//     if (empty($_POST['singername'])) {
-//         $errors['singername'] = "Please enter some name of singer";
-//     }
-//     if (empty($_POST['info'])) {
-//         $errors['info'] = "Please enter some informations";
-//     }
-// }
 
 
 
@@ -75,19 +69,19 @@ if (isset($_POST['submit'])) {
     } else {
         $images = saveFile($img);
 
+
+        //if get ID -> UPDATE it
         if (isset($_GET['id'])) {
-            echo "hghgjj";
-            $updateSinger = "UPDATE singers SET name = '$singername', info = '$info' WHERE id =$id";
+            $updateSinger = "UPDATE singers SET name = '$singername', info = '$info', image = '$images' WHERE id =$id";
             $res3 = mysqli_query($conn, $updateSinger);
             header("Location: adminDashboard.php");
         } else {
             $insertSinger = "INSERT INTO singers(name, info, image)
             VALUES ('$singername', '$info', '$images')";
-            // echo $addReviewerQuery;
             if (!mysqli_query($conn, $insertSinger)) {
                 echo  "Error: " . "<br>" . mysqli_error($conn);
             } else {
-                // header("Location: adminDashboard.php");
+                header("Location: adminDashboard.php");
             }
         }
     }
@@ -124,7 +118,7 @@ if (isset($_POST['submit'])) {
 
         <a href="editSinger.php" class="ca">BACK</a>
 
-        <button type="submit" name="submit">Update</button>
+        <button type="submit" name="submit">SUBMIT</button>
     </form>
 </body>
 

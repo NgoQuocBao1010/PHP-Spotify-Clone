@@ -94,6 +94,22 @@ h1{
     text-decoration: underline;
 }
 
+.ca2{
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #444;
+    padding: 10px 10px; 
+    background-color: #fff; 
+    border-radius: 15px; 
+    margin-bottom: 5px;
+}
+
+.ca2:hover{
+    text-decoration: underline;
+}
+
 .home-nav a{
     padding: 10px;
     color: #f7bd65;

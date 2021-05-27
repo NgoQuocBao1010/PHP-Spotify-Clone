@@ -15,6 +15,7 @@ $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="ca2" style=" padding: 10px 10px; background-color: #fff; border-radius: 15px; margin-bottom: 5px;" href="adminDashboard.php">BACK</a>
 <table align="center" border="2" style="width:600px; line-height:40px; color: white;">
         <tr>
             <th colspan="6">Singers Info</th>

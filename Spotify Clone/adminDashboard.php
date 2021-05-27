@@ -1,3 +1,11 @@
+<?php
+include ("connection.php");
+session_start();
+
+if($_SESSION['id']){
+    $id = $_SESSION['id'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +17,6 @@
 </head>
 <body>
     <div class="dashboard">
-
         <!-- <label>Users</label><br> -->
         <a href="editUser.php"><i class="fas fa-users fa-7x"></i></a>
 
