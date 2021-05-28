@@ -18,12 +18,13 @@ $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <div class="link">
         <a class="ca2" href="adminDashboard.php">BACK</a>
-        <a class="ca2" style="margin-top:5px;" href=insertSong.php>INSERT</a>
+        <a class="ca2" style="margin-top:5px;" href=insertSong.php><i class="fa fa-plus"></i></a>
     </div>
 
     <table align="center" border="2" style="width:600px; line-height:40px; color: white;">
