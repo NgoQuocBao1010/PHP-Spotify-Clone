@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($password)) {
-        $errors['password'] = "password cant be empty!!!";
+        $errors['password'] = "Password cant be empty!!!";
     } else {
         $password = md5($password);
         $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 
                 header("Location: ../index.php");
                 exit();
-                echo "<h1 style='color: white;'>Thanh cong</h1>";
+                // echo "<h1 style='color: white;'>Thanh cong</h1>";
             } else {
                 $errors['password'] = "Incorrect username or password!";
             }
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
     <form action="login.php" method="post">
         <h2>LOGIN</h2>
         <?php foreach ($errors as $error) : ?>
-            <p><?php echo $error; ?></p>
+            <p class="error"><?php echo $error; ?></p>
         <?php endforeach; ?>
         <label>Username</label>
         <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>"><br>

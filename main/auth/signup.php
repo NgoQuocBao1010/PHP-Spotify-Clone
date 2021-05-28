@@ -1,11 +1,11 @@
 <?php
 include("../utils/dbConnection.php");
-
-// Check for already login
+session_start();
 if (isset($_SESSION['id'])) {
     header("Location: ../index.php");
 }
-$username = $password = $re_password = $name = "";
+
+$username = $password = $re_password = "";
 $errors = array('name' => '', 'username' => '', 'password' => '', 're_password' => '', "matchPass" => "", "existUser" => "");
 if (isset($_POST['submit'])) {
     function cleanData($data)
@@ -24,16 +24,13 @@ if (isset($_POST['submit'])) {
 
 
     if (empty($username)) {
-        $errors['username'] = "Username cant be empty!!!";
-    }
-    if (empty($name)) {
-        $errors['name'] = "Name cant be empty!!!";
+        $errors['username'] = "Username can not be empty";
     }
     if (empty($password)) {
-        $errors['password'] = "password cant be empty!!!";
+        $errors['password'] = "Password can not be empty";
     }
     if (empty($re_password)) {
-        $errors['re_password'] = "re password cant be empty!!!";
+        $errors['re_password'] = "Confirm password can not be empty";
     }
     if ($password !== $re_password) {
         $errors['matchPass'] = "The confirmation password does not match";
@@ -49,7 +46,7 @@ if (isset($_POST['submit'])) {
         echo "Have errors";
     } else {
         $password = md5($password);
-        $sql2 = "INSERT INTO users(username, password, name, groupID) VALUE('$username', '$password', '$name', 2)";
+        $sql2 = "INSERT INTO users(username, password, groupID) VALUE('$username', '$password', 2)";
         $result2 = mysqli_query($conn, $sql2);
         if ($result2) header("Location: login.php");
     }
@@ -70,11 +67,8 @@ if (isset($_POST['submit'])) {
     <form action="signup.php" method="post">
         <h2>SIGN UP</h2>
         <?php foreach ($errors as $error) : ?>
-            <p><?php echo $error; ?></p>
+            <p class="error"><?php echo $error; ?></p>
         <?php endforeach; ?>
-
-        <label>Name</label>
-        <input type="text" name="name" placeholder="Name" value="<?php echo $name; ?>"><br>
 
         <label>Username</label>
         <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>"><br>

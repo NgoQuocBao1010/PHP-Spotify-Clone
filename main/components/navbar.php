@@ -15,7 +15,7 @@
                 <li><a href="#">Profile</a></li>
                 <li><a href="./auth/logout.php">Logout</a></li>
                 <?php if ($admin) : ?>
-                    <li><a href="./uploadSongs.php">Admin Dashboard</a></li>
+                    <li><a href="./auth/adminDashboard.php">Admin Dashboard</a></li>
                 <?php endif; ?>
             <?php else : ?>
                 <li><a href="./auth/login.php">Login</a></li>
