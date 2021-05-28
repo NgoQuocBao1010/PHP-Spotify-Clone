@@ -1,0 +1,160 @@
+/* Search Page */
+.search {
+    border: 0;
+	outline: none;
+	color: #8b7d77;
+    font-size: 15px;
+    line-height: 200%;
+}
+
+.searchContainer {
+    width: 50%;
+    /* background: lightgreen; */
+}
+
+.searchContainer .searchBox {
+    position: relative;
+    width: 100%;
+    height: 35px;
+}
+
+
+.searchContainer .searchBox .search {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 5px 20px;
+	border-radius: 3px;
+    border-radius: 50px;
+}
+
+.searchContainer .searchBox .icon{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 35px;
+	height: 100%;
+	background: #1DB954;
+	z-index: 1;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.searchContainer .searchBox .icon .fas{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: #fff;
+	font-size: 20px;
+}
+
+.songContain {
+    width: 100%;
+}
+.song {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    transition: all 0.15s linear;
+}
+
+.song:hover {
+    background: rgb(87, 86, 86);
+}
+
+.song h5 {
+    color: rgb(150, 148, 148);
+}
+
+.info,
+.func {
+    display: flex;
+    align-items: center;
+    margin: 10px 40px;
+}
+
+.info {
+    flex: 4;
+    position: relative;
+    /* background: rgb(109, 151, 109); */
+}
+
+.info > h4 {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.info::before {
+    content: "";
+    top: 50%;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -20%);
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in;
+}
+
+.info::before {
+    content: "\f04b";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 0.5em;
+    background: #1db954;
+    display: grid;
+    place-items: center;
+    z-index: 10;
+}
+
+.info:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.info img {
+    width: 50px;
+    height: 50px;
+    margin: 0 25px;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.detail .singerPage {
+    color: lightgray;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.detail .singerPage:hover {
+    color: white;
+}
+
+.detail h4,
+.detail h5 {
+    font-family: "Roboto", sans-serif;
+    color: lightgray;
+    margin: 2px 15px;
+}
+
+.func {
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.func > * {
+    cursor: pointer;
+}
+
