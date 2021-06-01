@@ -1,0 +1,96 @@
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../spotify-theme.png);
+    display: flex;
+    justify-content: center;
+    height:100vh;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ca {
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #444;
+  }
+
+.notice{
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+
+.form-insert{
+    width: 500px;
+    border: 2px solic #ccc;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.form-insert input{
+    display: block;
+    border: 2px solid #ccc;
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.form-insert label {
+    color: #888;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.form-insert select{
+    display: block;
+    border: 2px solid #ccc;
+    width: 95%;
+    padding: 5px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.form-insert button{
+    float: right;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+}
+
+.form-insert button:hover{
+    opacity: .7;
+}
+
+.error{
+    background: #f2dede;
+    color: #A94442;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+.success{
+    background: #D4EDDA;
+    color: #40754C;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+.link{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
