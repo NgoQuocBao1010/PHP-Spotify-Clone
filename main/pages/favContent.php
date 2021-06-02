@@ -1,37 +1,29 @@
 <?php
+// Clean data from query result
+function reformData($queryResult)
+{
+    return ($queryResult["songID"]);
+}
 
-$favSongsQuery =  "SELECT Songs.id, Songs.title title,
-                        Songs.filePath audio, Songs.imgPath img,
-                        Singers.name singerName, Singers.id singerID
-                    FROM Songs 
-                    LEFT JOIN Singers on Singers.id = Songs.singerID
-                    LEFT JOIN Favourites on Favourites.songID = Songs.id
-                    WHERE Favourites.uid = $uid
-                    ORDER BY Songs.dateAdded DESC";
+$favSongsQuery = "SELECT Favourites.songID FROM Favourites
+                  WHERE Favourites.uid = $uid";
 
 $result = mysqli_query($conn, $favSongsQuery);
-$favSongs = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$queryResult = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-$songsQuery =  "SELECT Songs.id, Songs.title title,
-                        Songs.filePath audio, Songs.imgPath img,
-                        Singers.name singerName, Singers.id singerID
-                    FROM Songs 
-                    LEFT JOIN Singers on Singers.id = Songs.singerID
-                    LEFT JOIN Favourites on Favourites.songID = Songs.id
-                    WHERE Favourites.uid = $uid
-                    ORDER BY Songs.dateAdded DESC";
+$favSongs = array_map("reformData", $queryResult);
 ?>
 <?php include('./components/navbar.php'); ?>
 <div class="fav">
     <h1>Favourites Songs</h1>
-    <?php foreach ($favSongs as $index => $song) : ?>
-        <div class="song" data="<?php echo $song['id']; ?>">
+    <?php foreach ($favSongs as $index => $songID) : ?>
+        <div class="song" data="<?php echo $formatSongs[$songID]['id']; ?>">
             <div class="info">
                 <h4><?php echo $index + 1; ?> </h4>
-                <img src="<?php echo $song['img']; ?>">
+                <img src="<?php echo $formatSongs[$songID]['img']; ?>">
                 <div class="detail">
-                    <h4><?php echo $song['title']; ?></h4>
-                    <h5 data-singer="<?php echo $song["singerID"]; ?>"><?php echo $song['singerName']; ?></h5>
+                    <h4><?php echo $formatSongs[$songID]['title']; ?></h4>
+                    <h5 data-singer="<?php echo $formatSongs[$songID]["singerID"]; ?>"><?php echo $formatSongs[$songID]['singerName']; ?></h5>
                 </div>
             </div>
             <div class="func">
@@ -41,3 +33,7 @@ $songsQuery =  "SELECT Songs.id, Songs.title title,
         </div>
     <?php endforeach; ?>
 </div>
+<script>
+    let favSongIDs = JSON.parse('<?php echo json_encode($favSongs); ?>');
+    console.log(favSongIDs);
+</script>

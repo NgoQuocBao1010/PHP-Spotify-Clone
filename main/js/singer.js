@@ -10,12 +10,23 @@ const insertToQueue = (song) => {
     }
 };
 
+const addToFav = (song, isFav) => {
+    const msg = (isFav) ? "xoa vao yeu thich" : "them khoi yeu thich";
+    alert(msg);
+};
+
 
 const makeSongTitle = (index, song) => {
-    console.log(index, song["id"]);
+    // console.log(index, song["id"]);
     const titleContainer = document.createElement("div");
     titleContainer.classList.add("song");
     titleContainer.setAttribute("data", song["id"]);
+
+    let heartIcon = `<i class="far fa-heart"></i>`;
+
+    if (authenticated) {
+        if (favSongIDs.includes(song["id"])) heartIcon = `<i class="fas fa-heart" fav="1"></i>`;
+    }
 
     titleContainer.innerHTML = `
     <div class="info">
@@ -27,22 +38,26 @@ const makeSongTitle = (index, song) => {
         </div>
     </div>
     <div class="func">
-        <i class="far fa-heart"></i>
+        ${heartIcon}
         <i class="fas fa-list-ul"></i>
     </div>
     `;
 
     const playButton = titleContainer.querySelector("h4");
-    const heartIcon = titleContainer.querySelector("i.fa-heart");
+    const favIcon = titleContainer.querySelector("i.fa-heart");
     const queueIcon = titleContainer.querySelector("i.fa-list-ul");
 
     playButton.addEventListener('click', () => {
         playImmediate(song);
-    })
+    });
+
+    favIcon.addEventListener('click', () => {
+        addToFav(song, favIcon.hasAttribute("fav"));
+    });
 
     queueIcon.addEventListener('click', () => {
         insertToQueue(song);
-    })
+    });
 
     return titleContainer;
 };

@@ -67,13 +67,13 @@ foreach ($songs as $song) {
             <div class="musicContainer" id="home">
                 <?php include("./pages/homeContent.php"); ?>
             </div>
-            <div class="musicContainer hide" id="search">
-                <?php include("./pages/searchContent.php"); ?>
-            </div>
             <div class="musicContainer hide" id="favourites">
                 <?php if ($authenticated) : ?>
                     <?php include("./pages/favContent.php"); ?>
                 <?php endif; ?>
+            </div>
+            <div class="musicContainer hide" id="search">
+                <?php include("./pages/searchContent.php"); ?>
             </div>
             <div class="musicContainer hide" id="singer">
                 <?php include("./pages/singerContent.php"); ?>

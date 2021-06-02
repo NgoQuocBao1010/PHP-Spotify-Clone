@@ -312,5 +312,12 @@ progressContainer.addEventListener('click', setProgress);
 volumeInfo.addEventListener('click', setVolume);
 inputSearchs.forEach(inputSearch => {
     inputSearch.addEventListener('input', search);
-})
+});
+
+const xxx = document.querySelectorAll("i.fa-heart");
+xxx.forEach(icon => {
+    icon.addEventListener('click', () => {
+        addToFav({}, icon.hasAttribute("fav"));
+    });
+});
 goToSingerPage();
