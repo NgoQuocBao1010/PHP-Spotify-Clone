@@ -16,6 +16,7 @@ $favSongs = array_map("reformData", $queryResult);
 <?php include('./components/navbar.php'); ?>
 <div class="fav">
     <h1>Favourites Songs</h1>
+    <button>Play all</button>
     <?php foreach ($favSongs as $index => $songID) : ?>
         <div class="song" data="<?php echo $formatSongs[$songID]['id']; ?>">
             <div class="info">

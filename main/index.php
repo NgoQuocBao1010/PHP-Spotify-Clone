@@ -40,6 +40,7 @@ foreach ($songs as $song) {
     <link rel="stylesheet" href="./css/homePage.css">
     <link rel="stylesheet" href="./css/singerPage.css">
     <link rel="stylesheet" href="./css/searchPage.css">
+    <link rel="stylesheet" href="./css/favourite.css">
     <link href='https://css.gg/home.css' rel='stylesheet'>
     <title>Spotify</title>
 </head>

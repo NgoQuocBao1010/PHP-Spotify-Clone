@@ -1,0 +1,33 @@
+.fav {
+    width: 80%;
+    margin: 0 auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fav h1 {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.fav button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #1DB954;
+    font-weight: bold;
+    font-size: 20px;
+    box-sizing: border-box;
+
+    transition: all .3s ease;
+}
+
+.fav button:hover {
+    color: #1DB954;
+    background-color: white;
+}

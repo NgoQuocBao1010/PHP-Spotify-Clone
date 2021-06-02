@@ -5,7 +5,7 @@
             <h4 id="title"></h4>
             <h5 id="singerName"></h5>
         </div>
-        <i class="far fa-heart"></i>
+        <!-- <i class="far fa-heart"></i> -->
     </div>
     <div class="musicPlayer">
         <div class="navigation">
