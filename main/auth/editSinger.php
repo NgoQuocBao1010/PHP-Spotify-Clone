@@ -33,7 +33,7 @@ $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <a class="ca2" href="adminDashboard.php">BACK</a>
         </div>
 
-        <table id="customers" align="center" border="1" class="displaySinger">
+        <table id="customers" align="center" border="1" style="border-color: #fff;" class="displaySinger">
             <tr>
                 <th colspan="6">SINGERS INFO</th>
             </tr>

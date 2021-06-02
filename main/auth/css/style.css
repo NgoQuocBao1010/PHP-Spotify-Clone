@@ -5,6 +5,7 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column;
+  overflow: hidden;
 }
 
 * {
@@ -48,11 +49,6 @@ input.error1 {
   font-size: 12px;
 }
 
-/* input[type="checkbox" i]{
-    display: inline;
-    float: left;
-} */
-
 label {
   color: #888;
   font-size: 18px;
@@ -76,7 +72,6 @@ button:hover {
 .error {
   background: #f2dede;
   color: #a94442;
-  /* padding: 10px; */
   width: 95%;
   border-radius: 5px;
   margin: 20px auto;

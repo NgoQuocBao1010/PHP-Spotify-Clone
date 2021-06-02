@@ -5,6 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    position: relative;
   }
   
   * {
@@ -111,9 +112,13 @@ body {
     display: inline-block;
     text-decoration: none;
     color: black;
+    background-color: #fff;
     padding: 10px 10px;
     border-radius: 15px;
     margin-bottom: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .c3{

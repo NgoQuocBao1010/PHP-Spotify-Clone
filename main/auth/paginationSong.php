@@ -10,7 +10,7 @@ $start = ($_REQUEST['page']- 1)*5;
 $listSong = array();
 
     foreach ($songs as $index => $song){
-        if($start < $index && $index <= $end){
+        if($start <= $index && $index < $end){
             array_push ($listSong, $song);
         }
     }
