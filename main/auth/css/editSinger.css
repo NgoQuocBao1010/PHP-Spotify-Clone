@@ -1,16 +1,31 @@
 body {
-    background-image: url(spotify-theme.png);
+    background-image: url(../spotify-theme.png);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    padding-top: 200px;
   }
   
   * {
     font-family: sans-serif;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container{
+    text-align: center;
+    width: 1080px;
+    height: 100vh;
+    background-color: rgb(230, 230, 230);
+    color: black;
+    padding-top: 50px;
+    position: relative;
+  }
+
+  .displaySong{
+    margin: 0 auto;
   }
   
   form {
@@ -35,10 +50,6 @@ body {
     border-radius: 5px;
   }
   
-  /* input[type="checkbox" i]{
-      display: inline;
-      float: left;
-  } */
   
   label {
     color: #888;
@@ -63,7 +74,6 @@ body {
   .error {
     background: #f2dede;
     color: #a94442;
-    /* padding: 10px; */
     width: 95%;
     border-radius: 5px;
     margin: 20px auto;
@@ -100,11 +110,25 @@ body {
     padding: 10px;
     display: inline-block;
     text-decoration: none;
-    color: #444;
+    color: black;
     padding: 10px 10px;
-    background-color: #fff;
     border-radius: 15px;
     margin-bottom: 5px;
+    background-color: #fff;
+  }
+
+  .c3{
+    width : 1000px;
+    background-color: #1DB954;
+    margin: 0 auto;
+    margin-top: 5px;
+    border-radius: 15px;
+    padding: 10px;
+    }
+    
+  .c3 > a{
+    text-decoration: none;
+    color: #fff;
   }
   
   .ca2:hover {
@@ -191,11 +215,21 @@ body {
     display: flex;
     justify-content: space-between;
     width: 40%;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   
   table{
-    width:600px; 
+    width:1000px; 
     line-height:40px; 
-    color: #fff; 
+    margin: 0 auto;
+  }
+  
+  li:hover{
+    cursor: pointer;
+    background-color: #1DB954;
+    margin-top: 5px;
   }
   

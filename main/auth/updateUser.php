@@ -23,15 +23,15 @@ $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/editSong.css">
 </head>
 
 <body>
     <div class="link">
-        <a class="ca2" href="adminDashboard.php">BACK</a>
+        <a class="ca2" href="adminDashboard.php"><strong>BACK</strong></a>
         <a style="margin-top:5px;"></a>
     </div>
-    <table align="center" border="2" style="width:600px; line-height:40px; color: white;">
+    <table align="center" border="2" style=" border-color:#fff ;width:600px; line-height:40px; color: white;">
         <tr>
             <th colspan="6">User Info</th>
         </tr>

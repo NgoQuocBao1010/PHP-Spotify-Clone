@@ -6,7 +6,7 @@ if (isset($_SESSION['id'])) {
 }
 
 $username = $password = $re_password = "";
-$errors = array('name' => '', 'username' => '', 'password' => '', 're_password' => '', "matchPass" => "", "existUser" => "");
+$errors = array('username' => '', 'password' => '', 're_password' => '', "matchPass" => "", "existUser" => "");
 if (isset($_POST['submit'])) {
     function cleanData($data)
     {
@@ -20,26 +20,25 @@ if (isset($_POST['submit'])) {
     $password = cleanData($_POST['password']);
 
     $re_password = cleanData($_POST['re_password']);
-    $name = cleanData($_POST['name']);
 
 
     if (empty($username)) {
-        $errors['username'] = "Username can not be empty";
+        $errors['username'] = "Username can not be empty !";
     }
     if (empty($password)) {
-        $errors['password'] = "Password can not be empty";
+        $errors['password'] = "Password can not be empty !";
     }
     if (empty($re_password)) {
-        $errors['re_password'] = "Confirm password can not be empty";
+        $errors['re_password'] = "Confirm password can not be empty !";
     }
     if ($password !== $re_password) {
-        $errors['matchPass'] = "The confirmation password does not match";
+        $errors['matchPass'] = "The confirmation password does not match !";
     }
 
     $sql = "SELECT * FROM users WHERE username = '$username' ";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-        $errors['existUser'] = "User is already exist";
+        $errors['existUser'] = "User is already exist !";
     }
 
     if (array_filter($errors)) {
@@ -60,24 +59,35 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGN UP</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <form action="signup.php" method="post">
         <h2>SIGN UP</h2>
-        <?php foreach ($errors as $error) : ?>
-            <p class="error"><?php echo $error; ?></p>
-        <?php endforeach; ?>
-
+        <p class="error-container"><?php echo $errors['matchPass']; ?></p>
+        <p class="error-container"><?php echo $errors['existUser']; ?></p>
         <label>Username</label>
-        <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>"><br>
+        <input class="<?php if ($errors['username'] != '') {
+                        echo 'error1';
+                        } ?>" 
+        type="text" name="username" placeholder="Username" value="<?php echo $username; ?>">
+        <p class="error-container"><?php echo $errors['username']; ?></p>
 
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password" value="<?php echo $password; ?>"><br>
+        <input class="<?php if ($errors['password'] != '') {
+                        echo 'error1';
+                        } ?>" 
+        type="password" name="password" placeholder="Password" value="<?php echo $password; ?>">
+        <p class="error-container"><?php echo $errors['password']; ?></p>
 
         <label>Confirm Password</label>
-        <input type="password" name="re_password" placeholder="Confirm Password"><br>
+        <input class="<?php if ($errors['re_password'] != '') {
+                        echo 'error1';
+                        } ?>" 
+        type="password" name="re_password" placeholder="Confirm Password">
+        <p class="error-container"><?php echo $errors['re_password']; ?></p>
+        
 
         <button type="submit" name="submit">Sign Up</button>
         <a href="login.php" class="ca">Already have an account?</a>

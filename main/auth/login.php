@@ -20,11 +20,11 @@ if (isset($_POST['submit'])) {
     $password = cleanData($_POST['password']);
 
     if (empty($username)) {
-        $errors['username'] = "Username cant be empty!!!";
+        $errors['username'] = "Username cant be empty!";
     }
 
     if (empty($password)) {
-        $errors['password'] = "Password cant be empty!!!";
+        $errors['password'] = "Password cant be empty!";
     } else {
         $password = md5($password);
         $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
@@ -58,20 +58,25 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <form action="login.php" method="post">
         <h2>LOGIN</h2>
-        <?php foreach ($errors as $error) : ?>
-            <p class="error"><?php echo $error; ?></p>
-        <?php endforeach; ?>
         <label>Username</label>
-        <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>"><br>
+        <input class="<?php if ($errors['username'] != '') {
+                        echo 'error1';
+                        } ?>" 
+        type="text" name="username" placeholder="Username" value="<?php echo $username; ?>">
+        <p class="error-container"><?php echo $errors['username']; ?></p>
 
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password"><br>
+        <input class="<?php if ($errors['password'] != '') {
+                        echo 'error1';
+                        } ?>"
+         type="password" name="password" placeholder="Password">
+        <p class="error-container"><?php echo $errors['password']; ?></p>
 
         <button type="submit" name="submit">Login</button>
         <a href="signup.php" class="ca">Create an account</a>

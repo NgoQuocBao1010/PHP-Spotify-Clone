@@ -1,10 +1,11 @@
 body {
-  background-image: url(spotify-theme.png);
+  background-image: url(../spotify-theme.png);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   flex-direction: column;
+  overflow: hidden;
 }
 
 * {
@@ -34,10 +35,19 @@ input {
   border-radius: 5px;
 }
 
-/* input[type="checkbox" i]{
-    display: inline;
-    float: left;
-} */
+input.error1 {
+  border: 2px solid red;
+}
+
+
+/* ERRORS */
+.error-container {
+  margin: 0 auto;
+  padding-bottom: 10px;
+  width: 95%;
+  color: red;
+  font-size: 12px;
+}
 
 label {
   color: #888;
@@ -62,7 +72,6 @@ button:hover {
 .error {
   background: #f2dede;
   color: #a94442;
-  /* padding: 10px; */
   width: 95%;
   border-radius: 5px;
   margin: 20px auto;
