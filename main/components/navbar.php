@@ -12,7 +12,6 @@
         <ul class="logo-links">
             <h3><?php echo $username; ?></h3>
             <?php if ($authenticated) : ?>
-                <li><a href="#">Profile</a></li>
                 <li><a href="./auth/logout.php">Logout</a></li>
                 <?php if ($admin) : ?>
                     <li><a href="./auth/adminDashboard.php">Admin Dashboard</a></li>

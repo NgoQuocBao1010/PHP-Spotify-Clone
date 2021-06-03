@@ -40,6 +40,7 @@ foreach ($songs as $song) {
     <link rel="stylesheet" href="./css/homePage.css">
     <link rel="stylesheet" href="./css/singerPage.css">
     <link rel="stylesheet" href="./css/searchPage.css">
+    <link rel="stylesheet" href="./css/favourite.css">
     <link href='https://css.gg/home.css' rel='stylesheet'>
     <title>Spotify</title>
 </head>
@@ -67,13 +68,13 @@ foreach ($songs as $song) {
             <div class="musicContainer" id="home">
                 <?php include("./pages/homeContent.php"); ?>
             </div>
-            <div class="musicContainer hide" id="search">
-                <?php include("./pages/searchContent.php"); ?>
-            </div>
             <div class="musicContainer hide" id="favourites">
                 <?php if ($authenticated) : ?>
                     <?php include("./pages/favContent.php"); ?>
                 <?php endif; ?>
+            </div>
+            <div class="musicContainer hide" id="search">
+                <?php include("./pages/searchContent.php"); ?>
             </div>
             <div class="musicContainer hide" id="singer">
                 <?php include("./pages/singerContent.php"); ?>
@@ -92,6 +93,9 @@ foreach ($songs as $song) {
 <script src="./js/playingQueue.js"></script>
 <script src="./js/loginRequired.js"></script>
 <script src="./js/main.js"></script>
+<?php if ($authenticated) : ?>
+    <script src="./js/favourite.js"></script>
+<?php endif; ?>
 <?php include("./utils/changePageJs.php"); ?>
 <script>
     // const musicUI = document.querySelector(".musicContainer");

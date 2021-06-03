@@ -1,5 +1,5 @@
 const cards = document.querySelectorAll(".card");
-const songsTitle = document.querySelectorAll(".song");
+const songsTile = document.querySelectorAll(".song");
 
 // Song control buttons
 const playBtn = document.querySelector('#play');
@@ -239,10 +239,12 @@ cards.forEach(card => {
     })
 })
 
-songsTitle.forEach(title => {
-    let info = title.querySelector('.info h4');
-    const queueIcon = title.querySelector("i.fa-list-ul");
-    const songID = title.getAttribute("data");
+songsTile.forEach(tile => {
+    let info = tile.querySelector('.info h4');
+    const queueIcon = tile.querySelector("i.fa-list-ul");
+    const favIcon = tile.querySelector("i.fa-heart");
+    const trashIcon = tile.querySelector("i.fa-trash");
+    const songID = tile.getAttribute("data");
     const song = songDetails[songID];
 
     info.addEventListener('click', () => {
@@ -252,20 +254,29 @@ songsTitle.forEach(title => {
     queueIcon.addEventListener('click', () => {
         insertToQueue(song);
     })
-});
 
-const favIcon = document.querySelector(".musicInfo i");
-favIcon.addEventListener("click", () => {
-    if (!authenticated) {
-        loginPopup();
+    if (favIcon) {
+        favIcon.addEventListener('click', () => {
+            addToFav(song, favIcon.classList.contains('fas'));
+            if (authenticated)
+                favIcon.className = (favIcon.classList.contains('fas')) ? "far fa-heart" : "fas fa-heart";
+        });
     }
-    else {
-        if (isPlaying) {
-            console.log("add to fav");
-        }
-        else {
-            console.log("Nothing Playing")
-        }
+
+    if (trashIcon) {
+        trashIcon.addEventListener('click', () => {
+            const searchSongTiles = document.querySelectorAll("#search .song");
+            searchSongTiles.forEach(tile => {
+                const songID = tile.getAttribute("data");
+                console.log(songID, song.id);
+                if (songID == song.id) {
+                    const heartIcon = tile.querySelector(".func .fa-heart");
+                    heartIcon.className = "far fa-heart";
+                    console.log("yes");
+                }
+            });
+            addToFav(song, true);
+        });
     }
 });
 
@@ -312,5 +323,6 @@ progressContainer.addEventListener('click', setProgress);
 volumeInfo.addEventListener('click', setVolume);
 inputSearchs.forEach(inputSearch => {
     inputSearch.addEventListener('input', search);
-})
+});
+
 goToSingerPage();

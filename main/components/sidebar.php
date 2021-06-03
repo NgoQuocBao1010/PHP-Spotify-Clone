@@ -22,16 +22,4 @@
     </ul>
 
     <div class="breakLine"></div>
-
-    <div class="playtists">
-        <div class="playtist">
-            <h4>Playtist 1</h4>
-        </div>
-        <div class="playtist">
-            <h4>Playtist 2</h4>
-        </div>
-        <div class="playtist">
-            <h4>Playtist 3</h4>
-        </div>
-    </div>
 </div>

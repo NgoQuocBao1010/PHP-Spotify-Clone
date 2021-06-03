@@ -11,7 +11,7 @@ if (!$authenticated) {
 
 include("../utils/dbConnection.php");
 
-$name = $infoSinger = "";
+$name = $infoSinger = $imgFile = "";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -19,6 +19,7 @@ if (isset($_GET['id'])) {
     $res2 = mysqli_query($conn, $sql2);
     $data = mysqli_fetch_array($res2);
     $name = $data["name"];
+    $imgFile = "../" . $data["image"];
     $infoSinger = $data["info"];
 }
 
@@ -47,7 +48,8 @@ function saveFile($fileInfo)
 
 if (isset($_POST['submit'])) {
     if (empty($_FILES["img"]["name"])) {
-        $errors['img'] = "Image field cannot be empty";
+        if (!isset($_GET['id']))
+            $errors['img'] = "Image field cannot be empty";
     } else {
         if (strpos($_FILES["img"]["type"], "image") !== false) {
             $img = $_FILES['img'];
@@ -72,7 +74,11 @@ if (isset($_POST['submit'])) {
     if (array_filter($errors)) {
         echo 'Form not valid';
     } else {
-        $images = saveFile($img);
+        if ($img != "")
+            $images = saveFile($img);
+        else
+            $images = $data["image"];
+
 
 
         //IF GET ID -> UPDATE IT
@@ -118,6 +124,11 @@ if (isset($_POST['submit'])) {
         <label>More</label>
         <textarea style=" margin: 0px; width: 360px; height: 164px; border: 2px solid #ccc; border-radius: 5px;" name="info" type="text" placeholder="Singer Info"><?php echo $infoSinger; ?></textarea><br>
 
+        <?php if ($imgFile != "") : ?>
+            <label>Currrent Image</label>
+            <img style="width: 50px; height: 50px;" src="<?php echo $imgFile; ?>" alt="">
+            <br>
+        <?php endif; ?>
         <label>File Images</label>
         <input type="file" name="img" accept="image/*"> <br>
 

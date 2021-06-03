@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $getSingers);
 $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
-$titleUpdate = "";
+$titleUpdate = $singerIDfff = "";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -23,6 +23,7 @@ if (isset($_GET['id'])) {
     $res2 = mysqli_query($conn, $sql2);
     $data = mysqli_fetch_array($res2);
     $titleUpdate = $data["title"];
+    $singerIDfff = $data["singerID"];
 }
 
 $errors = array('title' => '', 'mp3' => '', 'img' => '');
@@ -125,7 +126,9 @@ if (isset($_POST['submit'])) {
             <label>Singer</label>
             <select name="singer">
                 <?php foreach ($singers as $singer) : ?>
-                    <option value='<?php echo $singer['id'] ?>'><?php echo $singer['name']; ?></option>
+                    <option value='<?php echo $singer['id'] ?>' <?php if ($singer['id'] === $singerIDfff) : ?> selected="selected" <?php endif; ?>>
+                        <?php echo $singer['name']; ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
             <label>MP3 File</label>

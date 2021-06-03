@@ -18,6 +18,14 @@ if (isset($_GET['search'])) {
     <h3 class="sectionTitle">Songs</h3>
     <div class="songsContain">
         <?php foreach ($songs as $index => $song) : ?>
+            <?php
+            $heartIcon = '<i class="far fa-heart"></i>';
+            if ($authenticated) {
+                if (in_array($song["id"], $favSongs)) {
+                    $heartIcon = '<i class="fas fa-heart" fav="1"></i>';
+                }
+            }
+            ?>
             <div class="song" data="<?php echo $song['id']; ?>">
                 <div class="info">
                     <h4><?php echo $index + 1; ?> </h4>
@@ -28,7 +36,7 @@ if (isset($_GET['search'])) {
                     </div>
                 </div>
                 <div class="func">
-                    <i class="far fa-heart"></i>
+                    <?php echo $heartIcon; ?>
                     <i class="fas fa-list-ul"></i>
                 </div>
             </div>
