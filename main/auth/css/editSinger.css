@@ -17,11 +17,20 @@ body {
   .container{
     text-align: center;
     width: 1080px;
-    height: 100vh;
+    height: 100%;
     background-color: rgb(230, 230, 230);
     color: black;
     padding-top: 50px;
     position: relative;
+  }
+
+  #customers {
+    height: 80%;
+  }
+
+  #customers tr, 
+  #customers td {
+    max-height: 10px;
   }
 
   .displaySong{
@@ -222,14 +231,12 @@ body {
   }
   
   table{
-    width:1000px; 
-    line-height:40px; 
+    width: 1000px; 
     margin: 0 auto;
   }
   
   li:hover{
     cursor: pointer;
     background-color: #1DB954;
-    margin-top: 5px;
   }
   

@@ -15,8 +15,8 @@ const addToFav = (song, isFav) => {
         loginPopup();
     }
     else {
-        const msg = (isFav) ? "xoa khoi yeu thich" : "them vao yeu thich";
-        alert(msg + ' ' + song.title);
+        // const msg = (isFav) ? "xoa khoi yeu thich" : "them vao yeu thich";
+        // alert(msg + ' ' + song.title);
 
         const ajaxFile = (isFav) ? "delFromFav" : "addToFav";
 
@@ -126,6 +126,16 @@ const makeSongTitleForFav = (index, song) => {
     });
 
     trashIcon.addEventListener('click', () => {
+        const searchSongTiles = document.querySelectorAll("#search .song");
+        searchSongTiles.forEach(tile => {
+            const songID = tile.getAttribute("data");
+            console.log(songID, song.id);
+            if (songID == song.id) {
+                const heartIcon = tile.querySelector(".func .fa-heart");
+                heartIcon.className = "far fa-heart";
+                console.log("yes");
+            }
+        });
         addToFav(song, true);
     });
 
@@ -141,7 +151,6 @@ const removeTileFromFav = () => {
     const favContent = document.querySelector(".fav .tileContainer");
     favContent.innerHTML = '';
     favSongIDs.forEach((id, index) => {
-        console.log(index);
         makeSongTitleForFav(index, songDetails[id]);
     })
 }

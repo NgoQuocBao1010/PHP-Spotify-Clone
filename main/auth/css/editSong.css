@@ -18,11 +18,12 @@ body {
   .container{
     text-align: center;
     width: 1080px;
-    height: 100vh;
+    height: 100%;
     background-color: rgb(230, 230, 230);
     color: black;
     padding-top: 100px;
     position: relative;
+    overflow: hidden;
   }
 
   .displaySong{
@@ -233,6 +234,5 @@ body {
   li:hover{
     cursor: pointer;
     background-color: #1DB954;
-    margin-top: 5px;
   }
   

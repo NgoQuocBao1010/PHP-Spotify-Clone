@@ -265,6 +265,16 @@ songsTile.forEach(tile => {
 
     if (trashIcon) {
         trashIcon.addEventListener('click', () => {
+            const searchSongTiles = document.querySelectorAll("#search .song");
+            searchSongTiles.forEach(tile => {
+                const songID = tile.getAttribute("data");
+                console.log(songID, song.id);
+                if (songID == song.id) {
+                    const heartIcon = tile.querySelector(".func .fa-heart");
+                    heartIcon.className = "far fa-heart";
+                    console.log("yes");
+                }
+            });
             addToFav(song, true);
         });
     }
