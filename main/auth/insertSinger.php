@@ -28,7 +28,7 @@ $singername = $img = $info = '';
 
 
 
-// insert singer into database
+// INSERT SINGER INTO DATABASE
 function saveFile($fileInfo)
 {
     $filename = $fileInfo['name'];
@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
         $images = saveFile($img);
 
 
-        //if get ID -> UPDATE it
+        //IF GET ID -> UPDATE IT
         if (isset($_GET['id'])) {
             $updateSinger = "UPDATE singers SET name = '$singername', info = '$info', image = '$images' WHERE id =$id";
             $res3 = mysqli_query($conn, $updateSinger);
