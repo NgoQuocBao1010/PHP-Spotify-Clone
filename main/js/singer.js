@@ -40,9 +40,8 @@ const addToFav = (song, isFav) => {
         }
         else {
             favSongIDs.push(song.id);
-            makeSongTitleForFav(favSongIDs.length, song);
+            makeSongTitleForFav(favSongIDs.length - 1, song);
         }
-        console.log(favSongIDs);
     }
 };
 
@@ -98,7 +97,7 @@ const makeSongTitle = (index, song) => {
 
 const makeSongTitleForFav = (index, song) => {
     // console.log(index, song["id"]);
-    const favContent = document.querySelector(".fav");
+    const favContent = document.querySelector(".fav .tileContainer");
     const titleContainer = document.createElement("div");
     titleContainer.classList.add("song");
     titleContainer.setAttribute("data", song["id"]);
@@ -119,10 +118,15 @@ const makeSongTitleForFav = (index, song) => {
     `;
 
     const playButton = titleContainer.querySelector("h4");
+    const trashIcon = titleContainer.querySelector("i.fa-trash");
     const queueIcon = titleContainer.querySelector("i.fa-list-ul");
 
     playButton.addEventListener('click', () => {
         playImmediate(song);
+    });
+
+    trashIcon.addEventListener('click', () => {
+        addToFav(song, true);
     });
 
     queueIcon.addEventListener('click', () => {
@@ -134,11 +138,10 @@ const makeSongTitleForFav = (index, song) => {
 
 
 const removeTileFromFav = () => {
-    const favContent = document.querySelector(".fav");
-    favContent.innerHTML = `
-        <h1>Favourites Songs</h1>
-    `;
+    const favContent = document.querySelector(".fav .tileContainer");
+    favContent.innerHTML = '';
     favSongIDs.forEach((id, index) => {
+        console.log(index);
         makeSongTitleForFav(index, songDetails[id]);
     })
 }

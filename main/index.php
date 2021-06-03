@@ -93,6 +93,9 @@ foreach ($songs as $song) {
 <script src="./js/playingQueue.js"></script>
 <script src="./js/loginRequired.js"></script>
 <script src="./js/main.js"></script>
+<?php if ($authenticated) : ?>
+    <script src="./js/favourite.js"></script>
+<?php endif; ?>
 <?php include("./utils/changePageJs.php"); ?>
 <script>
     // const musicUI = document.querySelector(".musicContainer");

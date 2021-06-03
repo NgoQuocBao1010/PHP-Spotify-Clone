@@ -242,8 +242,9 @@ cards.forEach(card => {
 songsTile.forEach(tile => {
     let info = tile.querySelector('.info h4');
     const queueIcon = tile.querySelector("i.fa-list-ul");
-    const songID = tile.getAttribute("data");
     const favIcon = tile.querySelector("i.fa-heart");
+    const trashIcon = tile.querySelector("i.fa-trash");
+    const songID = tile.getAttribute("data");
     const song = songDetails[songID];
 
     info.addEventListener('click', () => {
@@ -257,7 +258,14 @@ songsTile.forEach(tile => {
     if (favIcon) {
         favIcon.addEventListener('click', () => {
             addToFav(song, favIcon.classList.contains('fas'));
-            favIcon.className = (favIcon.classList.contains('fas')) ? "far fa-heart" : "fas fa-heart";
+            if (authenticated)
+                favIcon.className = (favIcon.classList.contains('fas')) ? "far fa-heart" : "fas fa-heart";
+        });
+    }
+
+    if (trashIcon) {
+        trashIcon.addEventListener('click', () => {
+            addToFav(song, true);
         });
     }
 });
