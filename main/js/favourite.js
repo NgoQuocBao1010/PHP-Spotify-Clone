@@ -8,4 +8,7 @@ playFavButton.addEventListener("click", () => {
         playingQueue = favouriteSongs;
         playQueue();
     }
+    else {
+        alert("You don't have any favourite song at the momment!!");
+    }
 });

@@ -212,7 +212,7 @@ function search(e) {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText !== "") {
                 var songs = JSON.parse(this.responseText);
-                console.log(songs);
+                // console.log(songs);
 
                 const songsContain = document.querySelector(".songsContain");
                 songsContain.innerHTML = "";

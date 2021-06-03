@@ -89,7 +89,7 @@ foreach ($songs as $song) {
     let songDetails = JSON.parse('<?php echo json_encode($formatSongs); ?>');
     let authenticated = JSON.parse('<?php echo json_encode($authenticated); ?>');
 </script>
-<script src="./js/singer.js"></script>
+<script src="./js/songTile.js"></script>
 <script src="./js/playingQueue.js"></script>
 <script src="./js/loginRequired.js"></script>
 <script src="./js/main.js"></script>
