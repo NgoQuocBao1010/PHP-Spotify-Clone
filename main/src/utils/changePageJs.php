@@ -16,7 +16,6 @@
 
         // Hide unsed and show used page
         document.querySelectorAll(".musicContainer").forEach(ui => {
-            // ui.style.display = (ui.id !== page) ? 'none' : '';
             if (ui.id !== page) {
                 ui.classList.add("hide");
             } else {

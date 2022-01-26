@@ -39,7 +39,6 @@ if (isset($_POST['submit'])) {
 
                 header("Location: ../index.php");
                 exit();
-                // echo "<h1 style='color: white;'>Thanh cong</h1>";
             } else {
                 $errors['password'] = "Incorrect username or password!";
             }
