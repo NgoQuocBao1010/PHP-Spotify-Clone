@@ -5,7 +5,7 @@ include("../auth/auth.php");
 if (isset($_GET['songID'])) {
     $songID = $_GET['songID'];
 
-    $addToFavQuery = "INSERT INTO Favourites
+    $addToFavQuery = "INSERT INTO favourites
                     VALUES ($uid, $songID);";
 
     if (mysqli_query($conn, $addToFavQuery)) {

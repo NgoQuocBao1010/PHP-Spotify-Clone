@@ -5,8 +5,8 @@ function reformData($queryResult)
     return ($queryResult["songID"]);
 }
 
-$favSongsQuery = "SELECT Favourites.songID FROM Favourites
-                  WHERE Favourites.uid = $uid";
+$favSongsQuery = "SELECT favourites.songID FROM favourites
+                  WHERE favourites.uid = $uid";
 
 $result = mysqli_query($conn, $favSongsQuery);
 $queryResult = mysqli_fetch_all($result, MYSQLI_ASSOC);

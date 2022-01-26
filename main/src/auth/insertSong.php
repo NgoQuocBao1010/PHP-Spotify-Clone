@@ -10,7 +10,7 @@ if (!$authenticated) {
 }
 
 include("../utils/dbConnection.php");
-$getSingers = "SELECT * from Singers";
+$getSingers = "SELECT * from singers";
 $result = mysqli_query($conn, $getSingers);
 $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
             $res3 = mysqli_query($conn, $updateSong);
             header("Location: editSong.php");
         } else {
-            $insertSong = "INSERT INTO Songs(title, filePath, imgPath, singerID) 
+            $insertSong = "INSERT INTO songs(title, filePath, imgPath, singerID) 
                              VALUES ('$title', '$mp3Path', '$imgPath', $singerID)";
             if (!mysqli_query($conn, $insertSong)) {
                 echo  "Error: " . "<br>" . mysqli_error($conn);

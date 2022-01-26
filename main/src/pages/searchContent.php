@@ -2,11 +2,11 @@
 if (isset($_GET['search'])) {
     $filterTexts = $_GET['search'];
     // Get songs from database
-    $songsFilterQuery = "SELECT Songs.id, Songs.title title, Singers.name singerName, 
-                        Songs.filePath audio, Songs.imgPath img, Singers.id singerID
-                        FROM Songs 
-                        LEFT JOIN Singers on Singers.id = Songs.singerID
-                        WHERE title LIKE '%$filterTexts%' OR Singers.name LIKE '%$filterTexts%'";
+    $songsFilterQuery = "SELECT songs.id, songs.title title, singers.name singerName, 
+                        songs.filePath audio, songs.imgPath img, singers.id singerID
+                        FROM songs 
+                        LEFT JOIN singers on singers.id = songs.singerID
+                        WHERE title LIKE '%$filterTexts%' OR singers.name LIKE '%$filterTexts%'";
 
     $result = mysqli_query($conn, $songsFilterQuery);
     $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);

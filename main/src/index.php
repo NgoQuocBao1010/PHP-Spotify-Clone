@@ -9,12 +9,12 @@ function redirect($url)
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
 }
 
-$getAllSongsQuery = "SELECT Songs.id, Songs.title title,
-                            Songs.filePath audio, Songs.imgPath img,
-                            Singers.name singerName, Singers.id singerID
-                    FROM Songs 
-                    LEFT JOIN Singers on Singers.id = Songs.singerID
-                    ORDER BY Songs.dateAdded DESC";
+$getAllSongsQuery = "SELECT songs.id, songs.title title,
+                            songs.filePath audio, songs.imgPath img,
+                            singers.name singerName, singers.id singerID
+                    FROM songs 
+                    LEFT JOIN singers on singers.id = songs.singerID
+                    ORDER BY songs.dateAdded DESC";
 
 $result = mysqli_query($conn, $getAllSongsQuery);
 $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);

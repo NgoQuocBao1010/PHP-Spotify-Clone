@@ -4,19 +4,19 @@ if (isset($_GET['singerID'])) {
     $singerID = $_GET['singerID'];
 
     $singerFilterQuery = "SELECT *
-                    FROM Singers 
+                    FROM singers 
                     WHERE id=$singerID";
 
     $result = mysqli_query($conn, $singerFilterQuery);
     $singer = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    $songsQuery =  "SELECT Songs.id, Songs.title title,
-                        Songs.filePath audio, Songs.imgPath img,
-                        Singers.name singerName, Singers.id singerID
-                    FROM Songs 
-                    LEFT JOIN Singers on Singers.id = Songs.singerID
-                    WHERE Singers.id = $singerID
-                    ORDER BY Songs.dateAdded DESC";
+    $songsQuery =  "SELECT songs.id, songs.title title,
+                        songs.filePath audio, songs.imgPath img,
+                        singers.name singerName, singers.id singerID
+                    FROM songs 
+                    LEFT JOIN singers on singers.id = songs.singerID
+                    WHERE singers.id = $singerID
+                    ORDER BY songs.dateAdded DESC";
 
     $result2 = mysqli_query($conn, $songsQuery);
     $songs = mysqli_fetch_all($result2, MYSQLI_ASSOC);
