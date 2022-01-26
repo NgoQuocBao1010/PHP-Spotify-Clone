@@ -81,7 +81,6 @@ $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 } else {
                     const id = checkbox.id;
                     const admin = (checkbox.checked) ? 1 : 2;
-                    // console.log("check", id, checkbox.checked);
 
                     var xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function() {

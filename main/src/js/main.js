@@ -2,9 +2,9 @@ const cards = document.querySelectorAll(".card");
 const songsTile = document.querySelectorAll(".song");
 
 // Song control buttons
-const playBtn = document.querySelector('#play');
-const prevBtn = document.querySelector('#prev');
-const nextBtn = document.querySelector('#next');
+const playBtn = document.querySelector("#play");
+const prevBtn = document.querySelector("#prev");
+const nextBtn = document.querySelector("#next");
 const muteBtn = document.querySelector("#mute");
 
 // Playing song detail
@@ -28,26 +28,29 @@ let songIndex = 0;
 
 // Profile Logo
 const profilePics = document.querySelectorAll(".logo");
-profilePics.forEach(pic => {
+profilePics.forEach((pic) => {
     pic.addEventListener("click", () => {
         const links = document.querySelectorAll(".logo-links");
 
-        links.forEach(link => {
+        links.forEach((link) => {
             link.classList.toggle("logo-active");
-        })
+        });
     });
-})
-
+});
 
 // Update function to all the singer's links
 function goToSingerPage() {
     const singerLinks = document.querySelectorAll(".singerPage");
-    singerLinks.forEach(link => {
-        link.addEventListener('click', () => {
+    singerLinks.forEach((link) => {
+        link.addEventListener("click", () => {
             const singerID = link.getAttribute("data-singer");
 
             // update url
-            window.history.pushState("", "", pageUrl + "/" + "singer.php" + "?singerID=" + singerID);
+            window.history.pushState(
+                "",
+                "",
+                pageUrl + "/" + "singer.php" + "?singerID=" + singerID
+            );
 
             // Show singer page
             showContent("singer");
@@ -66,14 +69,17 @@ function goToSingerPage() {
                         sImg.src = data["image"];
                         const sName = singerUI.querySelector(".coverDetail h1");
                         sName.innerText = data["name"];
-                        const sDescription = singerUI.querySelector(".description p");
+                        const sDescription =
+                            singerUI.querySelector(".description p");
                         sDescription.innerText = data["info"];
-                        const sDesImg = singerUI.querySelector(".description img");
+                        const sDesImg =
+                            singerUI.querySelector(".description img");
                         sDesImg.src = data["image"];
 
                         // Make all the song cards (song title)
-                        const allSingerSongs = singerUI.querySelector(".products");
-                        allSingerSongs.innerHTML = '';
+                        const allSingerSongs =
+                            singerUI.querySelector(".products");
+                        allSingerSongs.innerHTML = "";
                         data["songs"].forEach((song, index) => {
                             const newTitle = makeSongTitle(index, song);
                             allSingerSongs.appendChild(newTitle);
@@ -84,37 +90,38 @@ function goToSingerPage() {
                         const newPulseBtn = pulseBtn.cloneNode(true);
                         pulseBtn.parentNode.replaceChild(newPulseBtn, pulseBtn);
                         newPulseBtn.addEventListener("click", () => {
-                            // console.log("Playing all song from " + data["name"]);
                             playingQueue = data["songs"];
                             songIndex = 0;
                             playQueue();
-                        })
+                        });
                     }
                 }
             };
-            xmlhttp.open("GET", "./utils/getSingerInfo.php?singerID=" + singerID, true);
+            xmlhttp.open(
+                "GET",
+                "./utils/getSingerInfo.php?singerID=" + singerID,
+                true
+            );
             xmlhttp.send();
-        })
+        });
     });
 }
 
-
-// Load song 
+// Load song
 function loadSong(song) {
-    audio.src = song['audio'];
-    coverImg.src = song['img'];
-    title.innerText = song['title'];
-    singerName.innerText = song['singerName'];
+    audio.src = song["audio"];
+    coverImg.src = song["img"];
+    title.innerText = song["title"];
+    singerName.innerText = song["singerName"];
 }
 
 // Play song
 function playSong() {
     if (audio.src.includes("#")) return;
 
-    playBtn.querySelector('i.fas').classList.remove('fa-play');
-    playBtn.querySelector('i.fas').classList.add('fa-pause');
+    playBtn.querySelector("i.fas").classList.remove("fa-play");
+    playBtn.querySelector("i.fas").classList.add("fa-pause");
     audio.play();
-    // console.log(playingQueue);
     isPlaying = true;
 }
 
@@ -136,8 +143,8 @@ function playImmediate(song) {
 
 // Pause song
 function pauseSong() {
-    playBtn.querySelector('i.fas').classList.add('fa-play');
-    playBtn.querySelector('i.fas').classList.remove('fa-pause');
+    playBtn.querySelector("i.fas").classList.add("fa-play");
+    playBtn.querySelector("i.fas").classList.remove("fa-pause");
     audio.pause();
     isPlaying = false;
 }
@@ -205,15 +212,17 @@ function setVolume(e) {
 function search(e) {
     let filterTexts = e.target.value;
 
-    window.history.pushState("", "", pageUrl + "/" + "search.php?search=" + filterTexts);
+    window.history.pushState(
+        "",
+        "",
+        pageUrl + "/" + "search.php?search=" + filterTexts
+    );
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText !== "") {
                 var songs = JSON.parse(this.responseText);
-                // console.log(songs);
-
                 const songsContain = document.querySelector(".songsContain");
                 songsContain.innerHTML = "";
 
@@ -229,50 +238,49 @@ function search(e) {
     xmlhttp.send();
 }
 
-
 // Event listeners section
-cards.forEach(card => {
-    card.addEventListener('click', () => {
+cards.forEach((card) => {
+    card.addEventListener("click", () => {
         const songID = card.getAttribute("data");
         const song = songDetails[songID];
         playImmediate(song);
-    })
-})
+    });
+});
 
-songsTile.forEach(tile => {
-    let info = tile.querySelector('.info h4');
+songsTile.forEach((tile) => {
+    let info = tile.querySelector(".info h4");
     const queueIcon = tile.querySelector("i.fa-list-ul");
     const favIcon = tile.querySelector("i.fa-heart");
     const trashIcon = tile.querySelector("i.fa-trash");
     const songID = tile.getAttribute("data");
     const song = songDetails[songID];
 
-    info.addEventListener('click', () => {
+    info.addEventListener("click", () => {
         playImmediate(song);
-    })
+    });
 
-    queueIcon.addEventListener('click', () => {
+    queueIcon.addEventListener("click", () => {
         insertToQueue(song);
-    })
+    });
 
     if (favIcon) {
-        favIcon.addEventListener('click', () => {
-            addToFav(song, favIcon.classList.contains('fas'));
+        favIcon.addEventListener("click", () => {
+            addToFav(song, favIcon.classList.contains("fas"));
             if (authenticated)
-                favIcon.className = (favIcon.classList.contains('fas')) ? "far fa-heart" : "fas fa-heart";
+                favIcon.className = favIcon.classList.contains("fas")
+                    ? "far fa-heart"
+                    : "fas fa-heart";
         });
     }
 
     if (trashIcon) {
-        trashIcon.addEventListener('click', () => {
+        trashIcon.addEventListener("click", () => {
             const searchSongTiles = document.querySelectorAll("#search .song");
-            searchSongTiles.forEach(tile => {
+            searchSongTiles.forEach((tile) => {
                 const songID = tile.getAttribute("data");
-                console.log(songID, song.id);
                 if (songID == song.id) {
                     const heartIcon = tile.querySelector(".func .fa-heart");
                     heartIcon.className = "far fa-heart";
-                    console.log("yes");
                 }
             });
             addToFav(song, true);
@@ -280,35 +288,33 @@ songsTile.forEach(tile => {
     }
 });
 
-playBtn.addEventListener('click', () => {
+playBtn.addEventListener("click", () => {
     if (isPlaying) {
         pauseSong();
-    }
-    else {
+    } else {
         playSong();
     }
 });
 
-nextBtn.addEventListener('click', () => {
+nextBtn.addEventListener("click", () => {
     nextSong();
 });
 
-prevBtn.addEventListener('click', () => {
+prevBtn.addEventListener("click", () => {
     prevSong();
 });
 
-mute.addEventListener('click', () => {
+mute.addEventListener("click", () => {
     if (audio.volume != 0) {
-        mute.classList.remove('fa-volume-up');
-        mute.classList.add('fa-volume-mute');
-        mute.style.color = 'red';
+        mute.classList.remove("fa-volume-up");
+        mute.classList.add("fa-volume-mute");
+        mute.style.color = "red";
         audio.volume = 0;
-        volume.style.width = '0%';
-    }
-    else {
-        mute.classList.add('fa-volume-up');
-        mute.classList.remove('fa-volume-mute');
-        mute.style.color = 'lightgreen';
+        volume.style.width = "0%";
+    } else {
+        mute.classList.add("fa-volume-up");
+        mute.classList.remove("fa-volume-mute");
+        mute.style.color = "lightgreen";
         audio.volume = currentVol;
 
         const volPercent = (currentVol / 1) * 100;
@@ -317,12 +323,12 @@ mute.addEventListener('click', () => {
     }
 });
 
-audio.addEventListener('timeupdate', updateProgess);
-audio.addEventListener('ended', endSong);
-progressContainer.addEventListener('click', setProgress);
-volumeInfo.addEventListener('click', setVolume);
-inputSearchs.forEach(inputSearch => {
-    inputSearch.addEventListener('input', search);
+audio.addEventListener("timeupdate", updateProgess);
+audio.addEventListener("ended", endSong);
+progressContainer.addEventListener("click", setProgress);
+volumeInfo.addEventListener("click", setVolume);
+inputSearchs.forEach((inputSearch) => {
+    inputSearch.addEventListener("input", search);
 });
 
 goToSingerPage();

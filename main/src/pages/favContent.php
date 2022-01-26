@@ -38,5 +38,4 @@ $favSongs = array_map("reformData", $queryResult);
 </div>
 <script>
     let favSongIDs = JSON.parse('<?php echo json_encode($favSongs); ?>');
-    console.log(favSongIDs);
 </script>

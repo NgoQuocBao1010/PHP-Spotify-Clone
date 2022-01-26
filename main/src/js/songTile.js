@@ -2,32 +2,20 @@
 const insertToQueue = (song) => {
     if (!playingQueue.includes(song)) {
         playingQueue.push(song);
-        alert(`Songs ${song['title']} is added to queue!!`);
+        alert(`Songs ${song["title"]} is added to queue!!`);
         resetPlayingQueue();
-    }
-    else {
-        alert(`Songs ${song['title']} is already in playing queue!!`);
+    } else {
+        alert(`Songs ${song["title"]} is already in playing queue!!`);
     }
 };
 
 const addToFav = (song, isFav) => {
     if (!authenticated) {
         loginPopup();
-    }
-    else {
-        // const msg = (isFav) ? "xoa khoi yeu thich" : "them vao yeu thich";
-        // alert(msg + ' ' + song.title);
-
-        const ajaxFile = (isFav) ? "delFromFav" : "addToFav";
+    } else {
+        const ajaxFile = isFav ? "delFromFav" : "addToFav";
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText !== "") {
-                    console.log(this.responseText);
-                }
-            }
-        };
         xmlhttp.open("GET", `./utils/${ajaxFile}.php?songID=${song.id}`, true);
         xmlhttp.send();
 
@@ -37,17 +25,14 @@ const addToFav = (song, isFav) => {
                 favSongIDs.splice(index, 1);
             }
             removeTileFromFav();
-        }
-        else {
+        } else {
             favSongIDs.push(song.id);
             makeSongTitleForFav(favSongIDs.length - 1, song);
         }
     }
 };
 
-
 const makeSongTitle = (index, song) => {
-    // console.log(index, song["id"]);
     const titleContainer = document.createElement("div");
     titleContainer.classList.add("song");
     titleContainer.setAttribute("data", song["id"]);
@@ -55,7 +40,8 @@ const makeSongTitle = (index, song) => {
     let heartIcon = `<i class="far fa-heart"></i>`;
 
     if (authenticated) {
-        if (favSongIDs.includes(song["id"])) heartIcon = `<i class="fas fa-heart" fav="1"></i>`;
+        if (favSongIDs.includes(song["id"]))
+            heartIcon = `<i class="fas fa-heart" fav="1"></i>`;
     }
 
     titleContainer.innerHTML = `
@@ -64,7 +50,9 @@ const makeSongTitle = (index, song) => {
         <img src="${song["img"]}">
         <div class="detail">
             <h4>${song["title"]}</h4>
-            <h5 class="singerPage" data-singer="${song["singerID"]}">${song['singerName']}</h5>
+            <h5 class="singerPage" data-singer="${song["singerID"]}">${
+        song["singerName"]
+    }</h5>
         </div>
     </div>
     <div class="func">
@@ -77,27 +65,26 @@ const makeSongTitle = (index, song) => {
     const favIcon = titleContainer.querySelector("i.fa-heart");
     const queueIcon = titleContainer.querySelector("i.fa-list-ul");
 
-    playButton.addEventListener('click', () => {
+    playButton.addEventListener("click", () => {
         playImmediate(song);
     });
 
-    favIcon.addEventListener('click', () => {
-        addToFav(song, favIcon.classList.contains('fas'));
+    favIcon.addEventListener("click", () => {
+        addToFav(song, favIcon.classList.contains("fas"));
         if (authenticated)
-            favIcon.className = (favIcon.classList.contains('fas')) ? "far fa-heart" : "fas fa-heart";
+            favIcon.className = favIcon.classList.contains("fas")
+                ? "far fa-heart"
+                : "fas fa-heart";
     });
 
-    queueIcon.addEventListener('click', () => {
+    queueIcon.addEventListener("click", () => {
         insertToQueue(song);
     });
 
     return titleContainer;
 };
 
-
-
 const makeSongTitleForFav = (index, song) => {
-    // console.log(index, song["id"]);
     const favContent = document.querySelector(".fav .tileContainer");
     const titleContainer = document.createElement("div");
     titleContainer.classList.add("song");
@@ -109,7 +96,9 @@ const makeSongTitleForFav = (index, song) => {
         <img src="${song["img"]}">
         <div class="detail">
             <h4>${song["title"]}</h4>
-            <h5 class="singerPage" data-singer="${song["singerID"]}">${song['singerName']}</h5>
+            <h5 class="singerPage" data-singer="${song["singerID"]}">${
+        song["singerName"]
+    }</h5>
         </div>
     </div>
     <div class="func">
@@ -122,36 +111,34 @@ const makeSongTitleForFav = (index, song) => {
     const trashIcon = titleContainer.querySelector("i.fa-trash");
     const queueIcon = titleContainer.querySelector("i.fa-list-ul");
 
-    playButton.addEventListener('click', () => {
+    playButton.addEventListener("click", () => {
         playImmediate(song);
     });
 
-    trashIcon.addEventListener('click', () => {
+    trashIcon.addEventListener("click", () => {
         const searchSongTiles = document.querySelectorAll("#search .song");
-        searchSongTiles.forEach(tile => {
+        searchSongTiles.forEach((tile) => {
             const songID = tile.getAttribute("data");
-            console.log(songID, song.id);
+
             if (songID == song.id) {
                 const heartIcon = tile.querySelector(".func .fa-heart");
                 heartIcon.className = "far fa-heart";
-                console.log("yes");
             }
         });
         addToFav(song, true);
     });
 
-    queueIcon.addEventListener('click', () => {
+    queueIcon.addEventListener("click", () => {
         insertToQueue(song);
     });
 
     favContent.appendChild(titleContainer);
 };
 
-
 const removeTileFromFav = () => {
     const favContent = document.querySelector(".fav .tileContainer");
-    favContent.innerHTML = '';
+    favContent.innerHTML = "";
     favSongIDs.forEach((id, index) => {
         makeSongTitleForFav(index, songDetails[id]);
-    })
-}
+    });
+};

@@ -90,9 +90,8 @@ $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                 let html = '';
                 displaySong.innerHTML = header;
-                // displaySong.innerHTML =
+
                 results.map((value, index) => {
-                    console.log(value['imgPath']);
                     html +=
                         ` <tr>
                     <td> ${index + 1}</td>

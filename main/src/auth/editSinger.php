@@ -89,9 +89,8 @@ $singers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                 let html = '';
                 displaySinger.innerHTML = header;
-                // displaySong.innerHTML =
+
                 results.map((value, index) => {
-                    console.log(value['image']);
                     html +=
                         ` <tr>
                     <td> ${index + 1}</td>

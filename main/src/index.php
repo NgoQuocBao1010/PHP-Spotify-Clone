@@ -97,9 +97,5 @@ foreach ($songs as $song) {
     <script src="./js/favourite.js"></script>
 <?php endif; ?>
 <?php include("./utils/changePageJs.php"); ?>
-<script>
-    // const musicUI = document.querySelector(".musicContainer");
-    // console.log(musicUI.innerHTML);
-</script>
 
 </html>
