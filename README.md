@@ -45,18 +45,23 @@ Here's the detail:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This project is very simple to get started. Pygame is the only required module.
+You can run docker to take a peek at our project. Before starting, please make sure you have Docker install on your machine.
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/NgoQuocBao1010/Chinese-Chess-Game.git
+   git clone https://github.com/NgoQuocBao1010/Spotify-Clone-.git
    ```
-2. Install required package
+2. Change directory to the docker folder
    ```sh
-   pip install requirements.txt
+   cd docker
    ```
+3. Build the docker container
+    ```sh
+    docker-compose up
+    ```
+4. Now, you can go to the [localhost:8000](localhost:8000/) on your computer to use our website.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -89,9 +94,11 @@ Distributed under the MIT License.
 
 
 <!-- CONTACT -->
-## Contact
+## Contact Us
 
 Ngô Hồng Quốc Bảo - [@NgoQuocBao](https://twitter.com/ngohquocbao1010)
+
+Anh Nguyen - [@nguyendang127](https://github.com/nguyendang127)
 
 Project Link: [https://github.com/NgoQuocBao1010/Chinese-Chess-Game](https://github.com/NgoQuocBao1010/Chinese-Chess-Game)
 
