@@ -1,0 +1,35 @@
+version: '3.3'
+services: 
+    web: 
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        image: php:5.6-apache
+        container_name: php5
+        depends_on: 
+            - db
+        volumes: 
+            - ../src:/var/www/html/
+        ports:
+            - 8000:80
+    db: 
+        container_name: mysql57
+        image: mysql:5.7
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_DATABASE: myspotify
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: user
+            MYSQL_PASSWORD: user
+        volumes:
+            - ../db_create_script.sql:/docker-entrypoint-initdb.d/db_create_script.sql
+        ports: 
+            - 6033:3306
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            - PMA_ARBITRARY=1
