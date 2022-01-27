@@ -1,6 +1,5 @@
 <div id="top"></div>
 
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -8,41 +7,40 @@
     <img src="images/screenshots/logo.jpg" alt="Logo" width="200px">
   </a>
 
-  <h3 align="center"> <strong>Chinese Chess Game</strong> </h3>
+  <h3 align="center"> <strong>Spotify Clone</strong> </h3>
 
   <p align="center">
-    A Chinese Chess Game desktop application built with Python3 and Pygame
+    A music player application was built by PHP and Javascript
     <br />
     <br />
 </p>
 </div>
 
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
-This is a multiplayer Chinese game application for desktop that I built using Python3 and Pygame.
+This is a music player application, which is similiar with Spotify
 
 <p align="center"><img src="images/screenshots/gameplay.png" alt="Logo" width="40%"></p>
 
 Here's the detail:
-* Provide move checking system.
-* Checkmate detection.
-* Other additional functionalities such as Undo a move or Reset a game.
+
+- Play/Stop playing song.
+- Searching song titles or singer names.
+- Managing the database for Administrator.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With
-* [Python](https://python.org/)
-* [Pygame](https://pygame.org/)
+
+- [PHP](https://www.php.net/)
+- [Javascript](https://www.javascript.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 You can run docker to take a peek at our project. Before starting, please make sure you have Docker install on your machine.
@@ -58,15 +56,15 @@ You can run docker to take a peek at our project. Before starting, please make s
    cd docker
    ```
 3. Build the docker container
-    ```sh
-    docker-compose up
-    ```
+   ```sh
+   docker-compose up
+   ```
 4. Now, you can go to the [localhost:8000](localhost:8000/) on your computer to use our website.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -82,32 +80,30 @@ Don't forget to give the project a star ⭐⭐⭐! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact Us
 
 Ngô Hồng Quốc Bảo - [@NgoQuocBao](https://twitter.com/ngohquocbao1010)
 
-Anh Nguyen - [@nguyendang127](https://github.com/nguyendang127)
+Đặng Nguyễn Phú Nguyên - [@nguyendang127](https://github.com/nguyendang127)
 
 Project Link: [https://github.com/NgoQuocBao1010/Chinese-Chess-Game](https://github.com/NgoQuocBao1010/Chinese-Chess-Game)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
+
 This awesome README temaplate is from [Best README Template](https://github.com/othneildrew/Best-README-Template). ♥
 
 <p align="right">(<a href="#top">back to top</a>)</p>
