@@ -10,7 +10,7 @@
   <h3 align="center"> <strong>Spotify Clone</strong> </h3>
 
   <p align="center">
-    A music player application was built with PHP, Vanila Javascript, HTML and CSS.
+    A music player application was built with PHP, MySQL, Vanila Javascript, HTML and CSS.
     <br />
     <br />
 </p>
@@ -26,6 +26,8 @@ This project is a university project I built with my partner Đặng Nguyễn Ph
 Here's what the web can do:
 
 - Full functional music player (play/stop, fast forward, volume control).
+- Music playing queue.
+- Manage favourite songs.
 - Searching for songs by titles or singer names.
 - Basic C.R.U.D operations for Administrator.
 
@@ -38,13 +40,14 @@ Here's what the web can do:
 
 - [PHP](https://www.php.net/)
 - [Javascript](https://www.javascript.com/)
+- [MySQL](https://www.mysql.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-You can run docker to take a peek at our project. Before starting, please make sure you have Docker install on your machine.
+You can run docker to take a peek at our project. Before starting, please make sure you have **Docker** install on your machine.
 
 ### Installation
 
