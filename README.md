@@ -110,7 +110,7 @@ You can run docker to take a peek at our project. Before starting, please make s
 
 <br/>
 
-*For more details on the project, please refer to our [full powerpoint report (Vietnamese)](docs/project_report.pptx).*
+*For more details on the project, please refer to our [full powerpoint report (Vietnamese)](docs/project_reports.pptx).*
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
