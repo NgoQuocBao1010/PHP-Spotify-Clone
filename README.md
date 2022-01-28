@@ -62,8 +62,8 @@ You can run docker to take a peek at our project. Before starting, please make s
    ```
 4. Now, the installation part is done:
    
-   - Go to the [localhost:8000](localhost:8000/) on your computer to use our **main website**.
-   - Go to the [localhost:8080](localhost:8090/) on your computer to view our **phpAdmin** of the project.
+   - Go to the [localhost:8000](http://localhost:8000/) on your computer to use our **main website**.
+   - Go to the [localhost:8080](http://localhost:8080/) on your computer to view our **phpAdmin** of the project.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
