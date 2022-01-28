@@ -3,14 +3,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/NgoQuocBao1010/Chinese-Chess-Game">
-    <img src="images/screenshots/logo.jpg" alt="Logo" width="200px">
+  <a href="https://github.com/NgoQuocBao1010/Spotify-Clone-">
+    <img src="screenshots/logo.png" alt="Logo" height="150px">
   </a>
 
   <h3 align="center"> <strong>Spotify Clone</strong> </h3>
 
   <p align="center">
-    A music player application was built by PHP and Javascript
+    A music player application was built with PHP, Vanila Javascript, HTML and CSS.
     <br />
     <br />
 </p>
@@ -19,16 +19,18 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+This project is a university project I built with my partner Đặng Nguyễn Phú Nguyên. The goal of this project is to build a website that mimic the appearances and also some of the basic funtionalities of a popular music-streaming platform - Spotify.
 
-This is a music player application, which is similiar with Spotify
+<p align="center"><img src="screenshots/main6.png" alt="Logo" width="80%"></p>
 
-<p align="center"><img src="images/screenshots/gameplay.png" alt="Logo" width="40%"></p>
+Here's what the web can do:
 
-Here's the detail:
+- Full functional music player (play/stop, fast forward, volume control).
+- Searching for songs by titles or singer names.
+- Basic C.R.U.D operations for Administrator.
 
-- Play/Stop playing song.
-- Searching song titles or singer names.
-- Managing the database for Administrator.
+
+<p><i>Go <a href="#screenshots">here</a> for more screenshots of the website</i></p> 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -40,7 +42,6 @@ Here's the detail:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-
 ## Getting Started
 
 You can run docker to take a peek at our project. Before starting, please make sure you have Docker install on your machine.
@@ -59,12 +60,64 @@ You can run docker to take a peek at our project. Before starting, please make s
    ```sh
    docker-compose up
    ```
-4. Now, you can go to the [localhost:8000](localhost:8000/) on your computer to use our website.
+4. Now, the installation part is done:
+   
+   - Go to the [localhost:8000](localhost:8000/) on your computer to use our **main website**.
+   - Go to the [localhost:8080](localhost:8090/) on your computer to view our **phpAdmin** of the project.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
 
+<!-- SCREENSHOTS -->
+## Screenshots of the website
+<div id="screenshots"></div>
+
+1. <details>
+      <summary>Main Website</summary>
+      <ul>
+      <br/>
+      <li><p align="center"><img src="screenshots/main6.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/main2.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/main5.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/main3.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/main4.png" alt="Gameplay 1" width="100%"></p></li>
+      </ul>
+   </details>
+
+<br/>
+
+2. <details>
+      <summary>Administrator Website</summary>
+      <ul>
+      <br/>
+      <li><p align="center"><img src="screenshots/ad1.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/ad2.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/ad3.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/ad4.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      <li><p align="center"><img src="screenshots/ad5.png" alt="Gameplay 1" width="100%"></p></li>
+      <br/>
+      </ul>
+   </details>
+
+<br/>
+
+*For more details on the project, please refer to our [full powerpoint report (Vietnamese)](docs/project_report.pptx).*
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<br/>
+<br/>
+
+<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -96,7 +149,7 @@ Ngô Hồng Quốc Bảo - [@NgoQuocBao](https://twitter.com/ngohquocbao1010)
 
 Đặng Nguyễn Phú Nguyên - [@nguyendang127](https://github.com/nguyendang127)
 
-Project Link: [https://github.com/NgoQuocBao1010/Chinese-Chess-Game](https://github.com/NgoQuocBao1010/Chinese-Chess-Game)
+Project Link: [https://github.com/NgoQuocBao1010/Spotify-Clone-](https://github.com/NgoQuocBao1010/Spotify-Clone-)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
