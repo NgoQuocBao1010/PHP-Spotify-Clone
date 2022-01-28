@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/NgoQuocBao1010/Spotify-Clone-">
+  <a href="https://github.com/NgoQuocBao1010/PHP-Spotify-Clone">
     <img src="screenshots/logo.png" alt="Logo" height="150px">
   </a>
 
@@ -50,7 +50,7 @@ You can run docker to take a peek at our project. Before starting, please make s
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/NgoQuocBao1010/Spotify-Clone-.git
+   git clone https://github.com/NgoQuocBao1010/PHP-Spotify-Clone.git
    ```
 2. Change directory to the docker folder
    ```sh
@@ -149,7 +149,7 @@ Ngô Hồng Quốc Bảo - [@NgoQuocBao](https://twitter.com/ngohquocbao1010)
 
 Đặng Nguyễn Phú Nguyên - [@nguyendang127](https://github.com/nguyendang127)
 
-Project Link: [https://github.com/NgoQuocBao1010/Spotify-Clone-](https://github.com/NgoQuocBao1010/Spotify-Clone-)
+Project Link: [https://github.com/NgoQuocBao1010/PHP-Spotify-Clone](https://github.com/NgoQuocBao1010/PHP-Spotify-Clone)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
