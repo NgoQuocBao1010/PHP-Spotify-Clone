@@ -73,8 +73,9 @@ You can run docker to take a peek at our project. Before starting, please make s
 
 
 <!-- SCREENSHOTS -->
-## Screenshots of the website
 <div id="screenshots"></div>
+
+## Screenshots of the website
 
 1. <details>
       <summary>Main Website</summary>
