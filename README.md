@@ -22,6 +22,9 @@
 This project is a university project I built with my partner Đặng Nguyễn Phú Nguyên. The goal of this project is to build a website that mimic the appearances and also some of the basic funtionalities of a popular music-streaming platform - Spotify.
 
 <p align="center"><img src="screenshots/main6.png" alt="Logo" width="80%"></p>
+<p align="center"><img src="screenshots/main2.png" alt="Gameplay 1" width="80%"></p>
+<p align="center"><img src="screenshots/main5.png" alt="Gameplay 1" width="80%"></p>
+<p align="center"><img src="screenshots/main3.png" alt="Gameplay 1" width="80%"></p>
 
 Here's what the web can do:
 
